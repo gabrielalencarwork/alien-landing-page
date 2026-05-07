@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home1/hg32c827/public_html/
+    - export DEPLOYPATH=/home1/hg32c827/alienmkt.com.br/
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
