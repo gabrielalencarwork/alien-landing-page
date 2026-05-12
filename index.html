@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
     
     <style>
         /* =========================================
-           VARIÃVEIS DE ESTILO (DESIGN TOKENS)
+           VARIÁVEIS DE ESTILO (DESIGN TOKENS)
            ========================================= */
         :root {
             --neon-green: #00ff88;
@@ -58,10 +58,10 @@
             width: 100vw; height: 100vh;
             object-fit: cover;
             z-index: -2;
-            opacity: 0.5; /* Escurecer um pouco o vÃ­deo para dar leitura */
+            opacity: 0.5; /* Escurecer um pouco o vídeo para dar leitura */
         }
 
-        /* Fundo Estrelado / GalÃ¡xia */
+        /* Fundo Estrelado / Galáxia */
         .stars-bg {
             position: fixed;
             top: 0; left: 0;
@@ -70,10 +70,10 @@
             background: 
                 radial-gradient(circle at 15% 30%, rgba(0, 255, 136, 0.05), transparent 40%),
                 radial-gradient(circle at 85% 70%, rgba(0, 255, 136, 0.03), transparent 40%),
-                rgba(5, 5, 8, 0.7); /* Fundo escuro semi-transparente para atuar como overlay do vÃ­deo */
+                rgba(5, 5, 8, 0.7); /* Fundo escuro semi-transparente para atuar como overlay do vídeo */
         }
 
-        /* PartÃ­culas de estrelas (CSS puro) */
+        /* Partículas de estrelas (CSS puro) */
         .stars-bg::after {
             content: "";
             position: absolute;
@@ -97,7 +97,7 @@
         }
 
         /* =========================================
-           COMPONENTES REUTILIZÃVEIS
+           COMPONENTES REUTILIZÁVEIS
            ========================================= */
         .glass-panel {
             background: var(--glass-bg);
@@ -156,7 +156,7 @@
         }
 
         /* =========================================
-           HEADER (NAVEGAÃ‡ÃƒO)
+           HEADER (NAVEGAÇÃO)
            ========================================= */
         .alien-header {
             position: fixed;
@@ -170,7 +170,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 2px solid var(--neon-green); /* Borda verde superior como na referÃªncia */
+            border-top: 2px solid var(--neon-green); /* Borda verde superior como na referência */
             transition: all 0.3s ease;
         }
 
@@ -208,6 +208,25 @@
 
         .alien-nav a:hover {
             color: var(--neon-green);
+        }
+
+        /* Menu Hamburger */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 5px;
+        }
+
+        .hamburger-line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--neon-green);
+            transition: all 0.3s ease;
+            border-radius: 2px;
         }
 
         /* =========================================
@@ -254,7 +273,7 @@
         }
 
         /* =========================================
-           SERVIÃ‡OS SECTION
+           SERVIÇOS SECTION
            ========================================= */
         .services-section {
             padding: 100px 0;
@@ -311,7 +330,7 @@
         }
 
         /* =========================================
-           PORTFÃ“LIO SECTION
+           PORTFÓLIO SECTION
            ========================================= */
         .portfolio-section {
             padding: 100px 0;
@@ -454,6 +473,15 @@
             font-size: 0.9rem;
         }
 
+.legal-info-cnpj {
+    font-size: 11px;
+    color: var(--text-muted); /* Usa a mesma cor discreta que você já configurou */
+    margin-top: 15px;
+    opacity: 0.6; /* Deixa ainda mais sutil */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
         /* =========================================
            QUEM SOMOS E FAQ
            ========================================= */
@@ -524,8 +552,42 @@
                 border-bottom: 1px solid var(--neon-green);
                 padding: 15px 20px;
             }
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
             .alien-nav {
-                display: none; /* Implementar menu hamburger no WP/Elementor */
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: rgba(5, 5, 8, 0.98);
+                backdrop-filter: blur(10px);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--neon-green);
+                z-index: 1000;
+                box-shadow: -5px 0 30px rgba(0, 255, 136, 0.1);
+            }
+            .alien-nav.active {
+                right: 0;
+            }
+            .alien-nav a {
+                margin: 15px 0;
+                font-size: 1.2rem;
+            }
+            .hamburger.active .hamburger-line:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .hamburger-line:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .hamburger-line:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
             }
             .hero-section {
                 padding-top: 150px;
@@ -553,7 +615,7 @@
             .about-stats { grid-template-columns: 1fr; }
         }
         /* =========================================
-           PRICING TABLE (SERVIÃ‡OS)
+           PRICING TABLE (SERVIÇOS)
            ========================================= */
         .pricing-grid {
             display: grid;
@@ -703,7 +765,7 @@
             display: none;
         }
         .pricing-accordion summary::after {
-            content: 'â–¼';
+            content: '▼';
             font-size: 0.8rem;
             transition: transform 0.3s ease;
         }
@@ -811,7 +873,7 @@
 </head>
 <body>
 
-    <!-- Background Animado (VÃ­deo) -->
+    <!-- Background Animado (Vídeo) -->
     <video autoplay loop muted playsinline class="site-bg-video">
         <source src="assets/Create_movement_for_image_202605052324.mp4" type="video/mp4">
     </video>
@@ -819,16 +881,21 @@
     <!-- Background Estrelas (Overlay) -->
     <div class="stars-bg"></div>
 
-    <!-- INÃCIO: HEADER -->
+    <!-- INÍCIO: HEADER -->
     <header class="alien-header glass-panel">
         <a href="#" class="alien-logo" style="background: transparent !important;">
             <img src="assets/Favicon s Fundo svg.svg" alt="Alien Favicon" style="max-height: 40px; width: auto; object-fit: contain;">
         </a>
+        <button class="hamburger" id="hamburger-menu" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
         <nav class="alien-nav">
             <a href="#hero">Home</a>
             <a href="#sobre">Quem Somos</a>
-            <a href="#servicos">ServiÃ§os</a>
-            <a href="#portfolio">PortfÃ³lio</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#portfolio">Portfólio</a>
             <a href="#diferenciais">Diferenciais</a>
             <a href="#faq">FAQ</a>
             <a href="#contato" class="btn-outline" style="padding: 8px 24px;">Contato</a>
@@ -837,28 +904,28 @@
     <!-- FIM: HEADER -->
 
     <main>
-        <!-- INÃCIO: HERO SECTION -->
+        <!-- INÍCIO: HERO SECTION -->
         <section id="hero" class="hero-section">
             <div class="container hero-content">
-                <h1 class="hero-title">Pare de Gastar com Marketing do Passado.<br><span class="neon-text">Invista no Futuro do seu NegÃ³cio.</span></h1>
-                <p class="hero-subtitle">Unimos inteligÃªncia de dados e design de alto impacto para construir ecossistemas de vendas que trabalham continuamente pela expansÃ£o da sua marca.</p>
+                <h1 class="hero-title">Pare de Gastar com Marketing do Passado.<br><span class="neon-text">Invista no Futuro do seu Negócio.</span></h1>
+                <p class="hero-subtitle">Unimos inteligência de dados e design de alto impacto para construir ecossistemas de vendas que trabalham continuamente pela expansão da sua marca.</p>
                 
                 <a href="#contato" class="btn-neon">Explore o Futuro</a>
                 
-                <p class="hero-mechanism">InteligÃªncia AlienÃ­gena Aplicada</p>
+                <p class="hero-mechanism">Inteligência Alienígena Aplicada</p>
             </div>
         </section>
         <!-- FIM: HERO SECTION -->
 
-        <!-- INÃCIO: QUEM SOMOS -->
+        <!-- INÍCIO: QUEM SOMOS -->
         <section id="sobre" class="about-section">
             <div class="container">
                 <div class="about-grid">
                     <div class="about-text">
                         <h2>Quem <span class="neon-text">Somos</span></h2>
-                        <p>A <strong>Alien Marketing Inteligente</strong> nasceu da paixÃ£o por transformar negÃ³cios atravÃ©s do digital. Combinamos criatividade, tecnologia e estratÃ©gia para criar experiÃªncias que realmente convertem.</p>
-                        <p>Nossa equipe Ã© formada por especialistas em desenvolvimento web e trÃ¡fego pago, prontos para entender as particularidades do seu negÃ³cio e criar soluÃ§Ãµes personalizadas que geram resultados.</p>
-                        <p>NÃ£o acreditamos em fÃ³rmulas prontas. Cada projeto Ã© Ãºnico e merece uma abordagem exclusiva. Ã‰ assim que entregamos resultados consistentes para nossos clientes.</p>
+                        <p>A <strong>Alien Marketing Inteligente</strong> nasceu da paixão por transformar negócios através do digital. Combinamos criatividade, tecnologia e estratégia para criar experiências que realmente convertem.</p>
+                        <p>Nossa equipe é formada por especialistas em desenvolvimento web e tráfego pago, prontos para entender as particularidades do seu negócio e criar soluções personalizadas que geram resultados.</p>
+                        <p>Não acreditamos em fórmulas prontas. Cada projeto é único e merece uma abordagem exclusiva. É assim que entregamos resultados consistentes para nossos clientes.</p>
                     </div>
                     <div class="about-video-container" style="border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);">
                         <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
@@ -870,13 +937,13 @@
         </section>
         <!-- FIM: QUEM SOMOS -->
 
-        <!-- INÃCIO: SERVIÃ‡OS -->
+        <!-- INÍCIO: SERVIÇOS -->
         <section id="servicos" class="services-section">
             <div class="container">
-                <h2 class="section-title">Nossa <span class="neon-text">InteligÃªncia</span></h2>
+                <h2 class="section-title">Nossa <span class="neon-text">Inteligência</span></h2>
                 
                 <div class="pricing-grid">
-                    <!-- Plano 1: GestÃ£o de TrÃ¡fego -->
+                    <!-- Plano 1: Gestão de Tráfego -->
                     <div class="pricing-card popular">
                         <div class="popular-badge">Mais Popular</div>
                         <div class="pricing-icon" style="display: flex; gap: 12px; margin-bottom: 16px; justify-content: center;">
@@ -884,8 +951,8 @@
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tiktok.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
                         </div>
-                        <h3 class="pricing-title">GestÃ£o de TrÃ¡fego</h3>
-                        <div class="pricing-subtitle">Campanhas estratÃ©gicas nas principais redes para multiplicar suas vendas</div>
+                        <h3 class="pricing-title">Gestão de Tráfego</h3>
+                        <div class="pricing-subtitle">Campanhas estratégicas nas principais redes para multiplicar suas vendas</div>
                         
                         <details class="pricing-accordion">
                             <summary>Ver Planos e Detalhes</summary>
@@ -895,36 +962,36 @@
                                         <h4 class="neon-text" style="font-size: 1.1rem; margin-bottom: 4px;">Plano Premium</h4>
                                         <span style="font-size: 0.85rem; color: #ccc;">Gerenciamento Google Ads, Meta Ads e Tik Tok Ads</span><br>
                                         <div style="margin-top: 8px;"><s>R$3.000</s> <strong style="color:var(--neon-green); font-size: 1.2rem; margin-left: 8px;">R$2.500</strong></div>
-                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos AnÃºncios</span>
+                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos Anúncios</span>
                                     </div>
                                     <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
                                         <h4 class="neon-text" style="font-size: 1.1rem; margin-bottom: 4px;">Plano Master</h4>
                                         <span style="font-size: 0.85rem; color: #ccc;">Gerenciamento Google Ads e Meta Ads</span><br>
                                         <div style="margin-top: 8px;"><s>R$2.000</s> <strong style="color:var(--neon-green); font-size: 1.2rem; margin-left: 8px;">R$1.800</strong></div>
-                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos AnÃºncios</span>
+                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos Anúncios</span>
                                     </div>
                                     <div>
                                         <h4 class="neon-text" style="font-size: 1.1rem; margin-bottom: 4px;">Plano Start</h4>
                                         <span style="font-size: 0.85rem; color: #ccc;">Meta Ads ou Google Ads</span><br>
                                         <div style="margin-top: 8px;"><s>R$1.000</s> <strong style="color:var(--neon-green); font-size: 1.2rem; margin-left: 8px;">R$800</strong></div>
-                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos AnÃºncios</span>
+                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos Anúncios</span>
                                     </div>
                                 </div>
                                 
                                 <ul class="pricing-features" style="margin-bottom: 0;">
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> AnÃ¡lise completa do negÃ³cio</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> CriaÃ§Ã£o de campanhas no Meta Ads</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> CriaÃ§Ã£o de campanhas no Google Ads</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> CriaÃ§Ã£o de campanhas no Tik Tok Ads</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> PÃºblicos segmentados estrategicamente</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> RelatÃ³rios de performance</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> OtimizaÃ§Ã£o contÃ­nua</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Análise completa do negócio</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Criação de campanhas no Meta Ads</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Criação de campanhas no Google Ads</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Criação de campanhas no Tik Tok Ads</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Públicos segmentados estrategicamente</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Relatórios de performance</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Otimização contínua</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Suporte via WhatsApp</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ReuniÃµes mensais de alinhamento</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Reuniões mensais de alinhamento</li>
                                 </ul>
                             </div>
                         </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon pricing-btn">Quero evoluir meu negÃ³cio</a>
+                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon pricing-btn">Quero evoluir meu negócio</a>
                     </div>
 
                     <!-- Plano 2: Site Completo -->
@@ -933,7 +1000,7 @@
                             <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         </div>
                         <h3 class="pricing-title">Site Completo</h3>
-                        <div class="pricing-subtitle">Seu negÃ³cio com presenÃ§a digital profissional e moderna</div>
+                        <div class="pricing-subtitle">Seu negócio com presença digital profissional e moderna</div>
                         
                         <div class="pricing-price">
                             <s>R$1.900</s>
@@ -945,17 +1012,17 @@
                             <div class="accordion-content">
                                 <ul class="pricing-features" style="margin-bottom: 0;">
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Design moderno e responsivo</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> AtÃ© 5 pÃ¡ginas personalizadas</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Até 5 páginas personalizadas</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Otimizado para SEO</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> IntegraÃ§Ã£o com redes sociais</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> FormulÃ¡rio de contato</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 ano de hospedagem grÃ¡tis</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Integração com redes sociais</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Formulário de contato</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 ano de hospedagem grátis</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Certificado SSL incluso</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega em atÃ© 7 dias Ãºteis</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega em até 7 dias úteis</li>
                                 </ul>
                             </div>
                         </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negÃ³cio</a>
+                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negócio</a>
                     </div>
 
                     <!-- Plano 3: Landing Page -->
@@ -964,7 +1031,7 @@
                             <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                         </div>
                         <h3 class="pricing-title">Landing Page</h3>
-                        <div class="pricing-subtitle" style="color:var(--neon-green)">PÃ¡gina de Vendas<br><span style="color:var(--text-muted); font-size:0.85rem">PÃ¡gina focada em conversÃ£o para suas campanhas</span></div>
+                        <div class="pricing-subtitle" style="color:var(--neon-green)">Página de Vendas<br><span style="color:var(--text-muted); font-size:0.85rem">Página focada em conversão para suas campanhas</span></div>
                         
                         <div class="pricing-price">
                             <s>R$1.500</s>
@@ -975,32 +1042,32 @@
                             <summary>Ver Planos e Detalhes</summary>
                             <div class="accordion-content">
                                 <ul class="pricing-features" style="margin-bottom: 0;">
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Design focado em conversÃ£o</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Design focado em conversão</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copy persuasiva inclusa</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Totalmente responsivo</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Carregamento ultra-rÃ¡pido</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> IntegraÃ§Ã£o com WhatsApp</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Carregamento ultra-rápido</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Integração com WhatsApp</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Pixel de rastreamento</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega em atÃ© 5 dias Ãºteis</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 revisÃ£o inclusa</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega em até 5 dias úteis</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 revisão inclusa</li>
                                 </ul>
                             </div>
                         </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negÃ³cio</a>
+                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negócio</a>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- FIM: SERVIÃ‡OS -->
+        <!-- FIM: SERVIÇOS -->
 
-        <!-- INÃCIO: PORTFÃ“LIO -->
+        <!-- INÍCIO: PORTFÓLIO -->
         <section id="portfolio" class="portfolio-section">
             <div class="container">
                 <h2 class="section-title">Nossos <span class="neon-text">Projetos</span></h2>
                 
                 <div class="portfolio-grid">
                     <a href="https://fabriciosilvapsi.com.br/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
-                        <img src="file:///C:/Users/User/Desktop/Alien/Clientes/FabrÃ­cio Silva/Favicon s Fundo (svg).svg" alt="Logo Fabricio Silva" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                        <img src="assets/Favicon s Fundo (svg).svg" alt="Logo Fabricio Silva" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
                         <h4 class="neon-text">Acessar Site</h4>
                         <span>Fabricio Silva Psi</span>
                     </a>
@@ -1011,10 +1078,10 @@
                         <span>Nubia Experience</span>
                     </a>
 
-                    <a href="https://blackfriday-cinematic-promo.lovable.app/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
-                        <img src="assets/LOGO-MP-FILMES2.png" alt="Logo Promo" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                    <a href="https://dramaizatorres.com.br/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
+                        <img src="https://dramaizatorres.com.br/assets/logo-maiza-D97d4ZMj.png" alt="Logo Dra. Maíza Torres" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
                         <h4 class="neon-text">Acessar Site</h4>
-                        <span>Black Friday Promo</span>
+                        <span>Dra. Maíza Torres</span>
                     </a>
 
                     <a href="https://vitalixtelemedicina.com.br/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
@@ -1026,7 +1093,7 @@
                     <a href="https://www.labahianitaitacare.com/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
                         <img src="assets/Logo sol s Fundo (svg).svg" alt="Logo La Bahianita" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
                         <h4 class="neon-text">Acessar Site</h4>
-                        <span>La Bahianita ItacarÃ©</span>
+                        <span>La Bahianita Itacaré</span>
                     </a>
 
                     <a href="https://renomalegal.com.br/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
@@ -1037,13 +1104,13 @@
                 </div>
             </div>
         </section>
-        <!-- FIM: PORTFÃ“LIO -->
+        <!-- FIM: PORTFÓLIO -->
 
-        <!-- INÃCIO: DIFERENCIAIS -->
+        <!-- INÍCIO: DIFERENCIAIS -->
         <section id="diferenciais" class="ghost-section">
             <div class="container">
                 <h2 class="section-title">Por Que Escolher a <span class="neon-text">Alien Marketing?</span></h2>
-                <p class="ghost-subtitle">Entregamos tudo que vocÃª precisa para dominar o digital e multiplicar seus resultados.</p>
+                <p class="ghost-subtitle">Entregamos tudo que você precisa para dominar o digital e multiplicar seus resultados.</p>
                 
                 <div class="ghost-text-container">
                     <!-- Textos injetados via JS -->
@@ -1052,37 +1119,37 @@
         </section>
         <!-- FIM: DIFERENCIAIS -->
 
-        <!-- INÃCIO: FAQ -->
+        <!-- INÍCIO: FAQ -->
         <section id="faq" class="faq-section">
             <div class="container">
                 <h2 class="section-title">Perguntas <span class="neon-text">Frequentes</span></h2>
                 
                 <div class="faq-list">
                     <div class="faq-item">
-                        <button class="faq-question">Como a inteligÃªncia artificial Ã© aplicada?</button>
+                        <button class="faq-question">Como a inteligência artificial é aplicada?</button>
                         <div class="faq-answer">
-                            <p>Utilizamos algoritmos preditivos para analisar o comportamento do consumidor, otimizar campanhas em tempo real e personalizar a experiÃªncia na sua landing page, garantindo a maior taxa de conversÃ£o possÃ­vel.</p>
+                            <p>Utilizamos algoritmos preditivos para analisar o comportamento do consumidor, otimizar campanhas em tempo real e personalizar a experiência na sua landing page, garantindo a maior taxa de conversão possível.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question">Quanto tempo atÃ© ver resultados?</button>
+                        <button class="faq-question">Quanto tempo até ver resultados?</button>
                         <div class="faq-answer">
-                            <p>Embora cada nicho seja Ãºnico, nossas estruturas costumam gerar leads qualificados jÃ¡ nas primeiras 48 horas apÃ³s a ativaÃ§Ã£o das campanhas otimizadas.</p>
+                            <p>Embora cada nicho seja único, nossas estruturas costumam gerar leads qualificados já nas primeiras 48 horas após a ativação das campanhas otimizadas.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
-                        <button class="faq-question">VocÃªs atendem meu nicho de mercado?</button>
+                        <button class="faq-question">Vocês atendem meu nicho de mercado?</button>
                         <div class="faq-answer">
-                            <p>Sim. Nossa metodologia baseada em dados e neurociÃªncia Ã© adaptÃ¡vel a qualquer nicho de alto ticket, seja infoprodutos, serviÃ§os B2B, clÃ­nicas de estÃ©tica, e-commerce premium, entre outros.</p>
+                            <p>Sim. Nossa metodologia baseada em dados e neurociência é adaptável a qualquer nicho de alto ticket, seja infoprodutos, serviços B2B, clínicas de estética, e-commerce premium, entre outros.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <button class="faq-question">Como funciona a consultoria inicial?</button>
                         <div class="faq-answer">
-                            <p>Avaliamos todo o seu ecossistema atual: design, copy, mÃ©tricas de trÃ¡fego e funil de vendas. Entregamos um diagnÃ³stico preciso do que estÃ¡ travando o seu crescimento e como escalar.</p>
+                            <p>Avaliamos todo o seu ecossistema atual: design, copy, métricas de tráfego e funil de vendas. Entregamos um diagnóstico preciso do que está travando o seu crescimento e como escalar.</p>
                         </div>
                     </div>
                 </div>
@@ -1090,12 +1157,12 @@
         </section>
         <!-- FIM: FAQ -->
 
-        <!-- INÃCIO: CONTATO -->
+        <!-- INÍCIO: CONTATO -->
         <section id="contato" class="contact-section">
             <div class="container">
                 <div class="contact-box glass-panel">
-                    <h2>Pronto para a <span class="neon-text">EvoluÃ§Ã£o?</span></h2>
-                    <p>Agende uma consultoria gratuita e comece a escalar o seu negÃ³cio.</p>
+                    <h2>Pronto para a <span class="neon-text">Evolução?</span></h2>
+                    <p>Agende uma consultoria gratuita e comece a escalar o seu negócio.</p>
                     <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon">Conversar com um Alien</a>
                 </div>
             </div>
@@ -1103,7 +1170,7 @@
         <!-- FIM: CONTATO -->
     </main>
 
-    <!-- INÃCIO: FOOTER -->
+    <!-- INÍCIO: FOOTER -->
     <footer class="alien-footer">
         <div class="container">
             <div class="footer-grid">
@@ -1111,16 +1178,16 @@
                     <a href="#" class="alien-logo">
                         <img src="assets/Favicon s Fundo svg.svg" alt="Alien Favicon" style="max-height: 40px; width: auto; object-fit: contain;">
                     </a>
-                    <p>AgÃªncia de Marketing Inteligente.<br>Unindo neurociÃªncia, inteligÃªncia de dados e design de elite para alta conversÃ£o.</p>
+                    <p>Agência de Marketing Inteligente.<br>Unindo neurociência, inteligência de dados e design de elite para alta conversão.</p>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>NavegaÃ§Ã£o</h4>
+                    <h4>Navegação</h4>
                     <ul>
                         <li><a href="#hero">Home</a></li>
                         <li><a href="#sobre">Quem Somos</a></li>
-                        <li><a href="#servicos">ServiÃ§os</a></li>
-                        <li><a href="#portfolio">PortfÃ³lio</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
                         <li><a href="#diferenciais">Diferenciais</a></li>
                         <li><a href="#faq">FAQ</a></li>
                     </ul>
@@ -1131,13 +1198,15 @@
                     <ul>
                         <li><a href="#">alientrafego@gmail.com</a></li>
                         <li><a href="#">73 998529223</a></li>
-                        <li><a href="#">Atendemos em todo territÃ³rio brasileiro.</a></li>
+                        <li><a href="#">Atendemos em todo território brasileiro.</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 Alien - Marketing Inteligente. Todos os direitos reservados. O futuro Ã© agora.</p>
+                <p>&copy; 2026 Alien - Marketing Inteligente. Todos os direitos reservados. O futuro é agora.</p>
+<p class="legal-info-cnpj">Representante Legal | Gabriel Alencar Rego | CNPJ: 48.265.092/0001-68</p>
+</div>
             </div>
         </div>
     </footer>
@@ -1149,6 +1218,25 @@
 
     <!-- SCRIPTS -->
     <script>
+        // Menu Hamburger Mobile
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.querySelector('.alien-nav');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Fechar o menu ao clicar em um link
+            document.querySelectorAll('.alien-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
         // Smooth scrolling para os links da navbar
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1184,7 +1272,7 @@
 
         // Efeito Fantasma (Diferenciais)
         const ghostReasons = [
-            "EstratÃ©gia Personalizada",
+            "Estratégia Personalizada",
             "Sites Responsivos",
             "Copy Persuasiva",
             "Design Profissional",
@@ -1219,4 +1307,5 @@
     </script>
 </body>
 </html>
+
 
