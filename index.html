@@ -534,6 +534,53 @@
         .faq-item.active .faq-answer { padding: 0 24px 24px; max-height: 500px; }
 
         /* =========================================
+           NOVAS SEÇÕES (Fundador, Depoimentos, Como Funciona)
+           ========================================= */
+        .founder-section { padding: 100px 0; background: linear-gradient(180deg, transparent, rgba(0, 255, 136, 0.02), transparent); }
+        .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .founder-img-container {
+            border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.15);
+            position: relative;
+        }
+        .founder-img-container video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .founder-text p { margin-bottom: 16px; color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; }
+        .founder-text p:last-child { margin-bottom: 0; }
+
+        .how-it-works-section { padding: 100px 0; text-align: center; }
+        .how-it-works-subtitle { color: var(--neon-green); font-size: 0.9rem; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+        .how-it-works-title { font-size: 3rem; margin-bottom: 60px; line-height: 1.2; }
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+        .steps-grid::before {
+            content: ''; position: absolute; top: 50px; left: 10%; right: 10%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+            z-index: 0;
+        }
+        @media (max-width: 900px) { .steps-grid::before { display: none; } }
+        .step-card { background: var(--darker-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 40px 24px; position: relative; z-index: 1; transition: all 0.3s ease; }
+        .step-card:hover { border-color: var(--neon-green); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1); }
+        .step-icon {
+            width: 80px; height: 80px; background: rgba(0, 255, 136, 0.1); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;
+            color: var(--neon-green); border: 2px solid var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); transition: all 0.3s ease;
+        }
+        .step-icon svg { width: 36px; height: 36px; stroke-width: 1.5; }
+        .step-card:hover .step-icon { background: var(--neon-green); color: #000; box-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+        .step-title { font-size: 1.3rem; margin-bottom: 12px; color: var(--text-main); }
+        .step-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+        .testimonials-section { padding: 100px 0; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        .testimonial-card { padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+        .testimonial-stars { color: #facc15; font-size: 1.2rem; letter-spacing: 2px; }
+        .testimonial-text { font-style: italic; color: #ddd; font-size: 1.05rem; flex-grow: 1; line-height: 1.6; }
+        .testimonial-author { display: flex; align-items: center; gap: 16px; margin-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px; }
+        .testimonial-avatar { width: 50px; height: 50px; border-radius: 50%; background: #333; object-fit: cover; }
+        .testimonial-name { font-weight: bold; color: var(--neon-green); font-size: 1.1rem; }
+        .testimonial-role { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* =========================================
            RESPONSIVIDADE (Mobile First adaptado)
            ========================================= */
         @media (max-width: 992px) {
@@ -541,6 +588,9 @@
             .section-title { font-size: 2.5rem; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+            .founder-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .founder-grid .founder-img-container { order: -1; }
         }
 
         @media (max-width: 768px) {
@@ -598,6 +648,13 @@
             .hero-subtitle {
                 font-size: 1.1rem;
             }
+            .how-it-works-section, .founder-section {
+                padding: 60px 0;
+            }
+            .how-it-works-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -619,7 +676,7 @@
            ========================================= */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
             align-items: stretch;
             max-width: 1200px;
@@ -924,18 +981,63 @@
                     <div class="about-text">
                         <h2>Quem <span class="neon-text">Somos</span></h2>
                         <p>A <strong>Alien Marketing Inteligente</strong> nasceu da paixão por transformar negócios através do digital. Combinamos criatividade, tecnologia e estratégia para criar experiências que realmente convertem.</p>
-                        <p>Nossa equipe é formada por especialistas em desenvolvimento web e tráfego pago, prontos para entender as particularidades do seu negócio e criar soluções personalizadas que geram resultados.</p>
-                        <p>Não acreditamos em fórmulas prontas. Cada projeto é único e merece uma abordagem exclusiva. É assim que entregamos resultados consistentes para nossos clientes.</p>
+                        <p>Nossa especialidade é desenvolver sites profissionais modernos e gerenciar campanhas de tráfego pago inteligente para elevar o nível do seu negócio, posicionando a sua marca no digital e escalando o seu faturamento atual.</p>
+                        <p>Cada projeto é único e merece uma estratégia exclusiva. É assim que entregamos resultados consistentes para nossos clientes.</p>
                     </div>
                     <div class="about-video-container" style="border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);">
                         <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                            <source src="assets/Alien_arm_raises_and_winks_202605061828.mp4" type="video/mp4">
+                            <source src="assets/Video_Alien_4.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
             </div>
         </section>
         <!-- FIM: QUEM SOMOS -->
+
+
+
+        <!-- INÍCIO: COMO FUNCIONA -->
+        <section id="como-funciona" class="how-it-works-section">
+            <div class="container">
+                <span class="how-it-works-subtitle">O Processo Alien para evoluir o seu negócio</span>
+                <h2 class="how-it-works-title">Como <span class="neon-text">Funciona</span></h2>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="3" r="1"></circle><line x1="12" y1="4" x2="12" y2="7"></line><path d="M6.5 11.5A5.5 5.5 0 0 1 17.5 11.5"></path><ellipse cx="12" cy="12" rx="10" ry="2.5"></ellipse><path d="M7 14l-2 3"></path><path d="M12 14.5v3.5"></path><path d="M17 14l2 3"></path></svg>
+                        </div>
+                        <h3 class="step-title">Abdução</h3>
+                        <p class="step-desc">Momento onde abduzimos o seu negócio para analise de qual caminho é o melhor para direcionar a sua empresa no digital.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                        </div>
+                        <h3 class="step-title">Alinhamento Alien</h3>
+                        <p class="step-desc">Nessa etapa alinhamos o que você deseja com o que iremos produzir, para garantir excelência em nossa entrega.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <h3 class="step-title">Desenvolvimento</h3>
+                        <p class="step-desc">Desenvolver o projeto e a estratégia conforme o que foi alinhado entre o cliente e a Alien Marketing Inteligente.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+                        </div>
+                        <h3 class="step-title">Evolução Alien</h3>
+                        <p class="step-desc">Apresentamos o seu projeto pronto (site) e damos o start na campanhas de tráfego para iniciamos uma nova fase no seu negócio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FIM: COMO FUNCIONA -->
 
         <!-- INÍCIO: SERVIÇOS -->
         <section id="servicos" class="services-section">
@@ -944,15 +1046,19 @@
                 
                 <div class="pricing-grid">
                     <!-- Plano 1: Gestão de Tráfego -->
-                    <div class="pricing-card popular">
-                        <div class="popular-badge">Mais Popular</div>
+                    <div class="pricing-card">
                         <div class="pricing-icon" style="display: flex; gap: 12px; margin-bottom: 16px; justify-content: center;">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
                             <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tiktok.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
                         </div>
-                        <h3 class="pricing-title">Gestão de Tráfego</h3>
-                        <div class="pricing-subtitle">Campanhas estratégicas nas principais redes para multiplicar suas vendas</div>
+                        <h3 class="pricing-title" style="text-align: center;">Gestão de Tráfego</h3>
+                        <div class="pricing-subtitle" style="text-align: center; min-height: 48px;">Campanhas estratégicas nas principais redes para multiplicar suas vendas</div>
+                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px; margin-bottom: 16px;">
+                            <span style="font-size: 1rem; color: var(--text-muted);">A partir de</span>
+                            <span class="value" style="font-size: 2.2rem; line-height: 1;">R$800</span>
+                            <span style="font-size: 0.9rem; color: var(--neon-green);">no Plano Start</span>
+                        </div>
                         
                         <details class="pricing-accordion">
                             <summary>Ver Planos e Detalhes</summary>
@@ -994,48 +1100,17 @@
                         <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon pricing-btn">Quero evoluir meu negócio</a>
                     </div>
 
-                    <!-- Plano 2: Site Completo -->
-                    <div class="pricing-card">
-                        <div class="pricing-icon">
-                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </div>
-                        <h3 class="pricing-title">Site Completo</h3>
-                        <div class="pricing-subtitle">Seu negócio com presença digital profissional e moderna</div>
-                        
-                        <div class="pricing-price">
-                            <s>R$1.900</s>
-                            <span class="value">R$1.500</span>
-                        </div>
-                        
-                        <details class="pricing-accordion">
-                            <summary>Ver Planos e Detalhes</summary>
-                            <div class="accordion-content">
-                                <ul class="pricing-features" style="margin-bottom: 0;">
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Design moderno e responsivo</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Até 5 páginas personalizadas</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Otimizado para SEO</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Integração com redes sociais</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Formulário de contato</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 ano de hospedagem grátis</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Certificado SSL incluso</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega em até 7 dias úteis</li>
-                                </ul>
-                            </div>
-                        </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negócio</a>
-                    </div>
-
-                    <!-- Plano 3: Landing Page -->
+                    <!-- Plano 2: Site | Landing Page -->
                     <div class="pricing-card">
                         <div class="pricing-icon">
                             <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                         </div>
-                        <h3 class="pricing-title">Landing Page</h3>
-                        <div class="pricing-subtitle" style="color:var(--neon-green)">Página de Vendas<br><span style="color:var(--text-muted); font-size:0.85rem">Página focada em conversão para suas campanhas</span></div>
+                        <h3 class="pricing-title" style="text-align: center;">Site | Landing Page</h3>
+                        <div class="pricing-subtitle" style="color:var(--neon-green); text-align: center; min-height: 48px;">Página focada em conversão e presença digital</div>
                         
-                        <div class="pricing-price">
-                            <s>R$1.500</s>
-                            <span class="value">R$1.200</span>
+                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px;">
+                            <s>R$1.300</s>
+                            <span class="value" style="font-size: 2.2rem; line-height: 1;">R$999</span>
                         </div>
                         
                         <details class="pricing-accordion">
@@ -1046,10 +1121,69 @@
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copy persuasiva inclusa</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Totalmente responsivo</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Carregamento ultra-rápido</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Integração com WhatsApp</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 ano de hospedagem grátis</li>
                                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Pixel de rastreamento</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Entrega em até 5 dias úteis</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 revisão inclusa</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negócio</a>
+                    </div>
+
+                    <!-- Plano 3: Tráfego Pago + Site -->
+                    <div class="pricing-card popular">
+                        <div class="popular-badge">Mais Popular</div>
+                        <div class="pricing-icon">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3 class="pricing-title" style="text-align: center;">Tráfego Pago + Site</h3>
+                        <div class="pricing-subtitle" style="color:var(--neon-green); text-align: center; min-height: 48px;">O ecossistema completo para suas vendas</div>
+                        
+                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px;">
+                            <div style="display: flex; align-items: baseline; gap: 8px;">
+                                <span class="value" style="font-size: 2.2rem; line-height: 1;">R$800</span>
+                                <span style="font-size: 0.9rem; color: var(--text-muted);">/mês</span>
+                            </div>
+                            <div class="pricing-promo-text" style="margin-top: 4px; text-align: center;">Bônus: Site Gratuito (Tempo Limitado)</div>
+                        </div>
+                        
+                        <details class="pricing-accordion">
+                            <summary>Ver Planos e Detalhes</summary>
+                            <div class="accordion-content">
+                                <ul class="pricing-features" style="margin-bottom: 0;">
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestão de Tráfego Completa</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Site ou LP de Alta Conversão</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Estratégia de funil de vendas</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Relatórios de performance semanais</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Reuniões de acompanhamento</li>
+                                </ul>
+                            </div>
+                        </details>
+                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon pricing-btn">Quero evoluir meu negócio</a>
+                    </div>
+
+                    <!-- Plano 4: Ecommerce -->
+                    <div class="pricing-card">
+                        <div class="pricing-icon">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </div>
+                        <h3 class="pricing-title" style="text-align: center;">Ecommerce</h3>
+                        <div class="pricing-subtitle" style="text-align: center; min-height: 48px;">Loja Virtual Completa para vender 24h por dia</div>
+                        
+                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px;">
+                            <span style="font-size: 1rem; color: var(--text-muted);">A partir de</span>
+                            <span class="value" style="font-size: 2.2rem; line-height: 1;">R$2.500</span>
+                        </div>
+                        
+                        <details class="pricing-accordion">
+                            <summary>Ver Planos e Detalhes</summary>
+                            <div class="accordion-content">
+                                <ul class="pricing-features" style="margin-bottom: 0;">
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Layout personalizado e moderno</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Integração com Pix e Cartão</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Cálculo de frete integrado</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Painel administrativo simples</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Cadastro de produtos</li>
+                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Otimização para SEO</li>
                                 </ul>
                             </div>
                         </details>
@@ -1106,6 +1240,52 @@
         </section>
         <!-- FIM: PORTFÓLIO -->
 
+        <!-- INÍCIO: DEPOIMENTOS -->
+        <section id="depoimentos" class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">O que dizem <span class="neon-text">nossos clientes</span></h2>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card glass-panel">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"A equipe da Alien Marketing transformou completamente nossa presença digital. O novo site não apenas ficou com um design incrível, mas começou a gerar leads qualificados na primeira semana!"</p>
+                        <div class="testimonial-author">
+                            <img src="assets/depoimento_danilo.png" class="testimonial-avatar" alt="Danilo Vocari" style="object-fit: cover;">
+                            <div>
+                                <div class="testimonial-name">Danilo Vocari</div>
+                                <div class="testimonial-role">Empresário</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-panel">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Trabalho impecável e atendimento muito próximo. Eles realmente entendem do que estão falando quando o assunto é tráfego pago e conversão. Nossas vendas aumentaram 40%."</p>
+                        <div class="testimonial-author">
+                            <img src="assets/depoimento_yara.png" class="testimonial-avatar" alt="Yara Medeiros" style="object-fit: cover;">
+                            <div>
+                                <div class="testimonial-name">Yara Medeiros</div>
+                                <div class="testimonial-role">Empreendedora</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card glass-panel">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Fizemos a criação da landing page para um lançamento. O resultado foi acima do esperado e o suporte é sensacional."</p>
+                        <div class="testimonial-author">
+                            <img src="assets/depoimento_andre.png" class="testimonial-avatar" alt="André Filipe" style="object-fit: cover;">
+                            <div>
+                                <div class="testimonial-name">André Filipe</div>
+                                <div class="testimonial-role">Engenheiro Civil e Trader</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FIM: DEPOIMENTOS -->
+
         <!-- INÍCIO: DIFERENCIAIS -->
         <section id="diferenciais" class="ghost-section">
             <div class="container">
@@ -1118,6 +1298,28 @@
             </div>
         </section>
         <!-- FIM: DIFERENCIAIS -->
+
+        <!-- INÍCIO: FUNDADOR -->
+        <section id="fundador" class="founder-section">
+            <div class="container">
+                <div class="founder-grid">
+                    <div class="founder-img-container">
+                        <video autoplay loop muted playsinline>
+                            <source src="assets/Video_Alien_2.mp4" type="video/mp4">
+                        </video>
+                        <div style="padding-left: 20px; border-left: 3px solid var(--neon-green); margin-top: 24px; background: rgba(0,255,136,0.05); padding: 16px 16px 16px 20px; border-radius: 0 12px 12px 0; text-align: left;">
+                            <p style="font-style: italic; margin-bottom:0; font-size: 1.1rem; line-height: 1.6;">"A Alien surgiu com uma proposta simples: fugir do marketing genérico. Acredito que marcas fortes não nascem apenas de anúncios, elas nascem de visão, consistência e autenticidade."</p>
+                        </div>
+                    </div>
+                    <div class="founder-text" style="text-align: left;">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 24px;">Por trás da <span class="neon-text">Alien</span></h2>
+                        <p style="font-size: 1.3rem; margin-bottom: 24px;">Prazer, eu sou <strong>Gabriel Alencar</strong> - fundador da Alien Marketing Inteligente.</p>
+                        <p>Minha conexão com o marketing nasceu da inquietação de criar algo diferente. Sempre enxerguei o digital como um espaço onde criatividade, estratégia e autenticidade podem transformar negócios de verdade. Antes mesmo da Alien existir, minha essência já era artística: teatro, música, audiovisual e comunicação sempre fizeram parte da minha trajetória. Hoje, levo essa visão criativa para o marketing, unindo estética, posicionamento e inteligência estratégica para construir marcas que realmente se destacam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FIM: FUNDADOR -->
 
         <!-- INÍCIO: FAQ -->
         <section id="faq" class="faq-section">
