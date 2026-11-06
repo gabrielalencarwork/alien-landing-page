@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 160" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gold-metallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7e0a3" />
+      <stop offset="40%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#aa7c11" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, 5)">
+    <!-- Golden Emblem Circle -->
+    <g transform="translate(175, 40)">
+      <circle cx="0" cy="0" r="28" fill="none" stroke="url(#gold-metallic)" stroke-width="2" />
+      <!-- Tree / Leaf / Wheat Emblem -->
+      <path d="M0,18 C-8,10 -14,-2 -14,-12 C-14,-20 -7,-25 0,-25 C7,-25 14,-20 14,-12 C14,-2 -8,10 0,18 Z" fill="none" stroke="url(#gold-metallic)" stroke-width="2" />
+      <path d="M0,16 L0,-20" stroke="url(#gold-metallic)" stroke-width="1.8" />
+      <path d="M0,-2 C-6,-8 -10,-12 -10,-16" fill="none" stroke="url(#gold-metallic)" stroke-width="1.5" />
+      <path d="M0,-2 C6,-8 10,-12 10,-16" fill="none" stroke="url(#gold-metallic)" stroke-width="1.5" />
+      <path d="M0,6 C-7,1 -11,-3 -11,-7" fill="none" stroke="url(#gold-metallic)" stroke-width="1.5" />
+      <path d="M0,6 C7,1 11,-3 11,-7" fill="none" stroke="url(#gold-metallic)" stroke-width="1.5" />
+    </g>
+
+    <!-- Main Title "EDUARDO BORGES" -->
+    <text x="175" y="102" text-anchor="middle" fill="url(#gold-metallic)" font-family="'Cinzel', 'Playfair Display', 'Times New Roman', serif" font-weight="700" font-size="22" letter-spacing="3">EDUARDO BORGES</text>
+    
+    <!-- Subtitle "PSICOLOGIA CLÍNICA" -->
+    <text x="175" y="126" text-anchor="middle" fill="#d4af37" font-family="'Inter', 'Montserrat', sans-serif" font-weight="600" font-size="9.5" letter-spacing="3.5" opacity="0.85">PSICOLOGIA CLÍNICA</text>
+  </g>
+</svg>

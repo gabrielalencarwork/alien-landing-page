@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="100%" height="100%">
+  <g transform="translate(0, 0)">
+    <!-- Symbol / Icon -->
+    <g transform="translate(100, 12)">
+      <!-- Left diagonal block -->
+      <polygon points="25,38 75,38 45,72 -5,72" fill="#2d62a3" />
+      <!-- Right diagonal block -->
+      <polygon points="85,6 160,6 115,72 40,72" fill="#204a82" />
+      <!-- Facet shading detail -->
+      <polygon points="85,6 108,6 63,72 40,72" fill="#183864" />
+    </g>
+
+    <!-- Main Title "MENEGHIN" -->
+    <text x="200" y="118" text-anchor="middle" fill="#ffffff" font-family="'Inter', 'Montserrat', 'Segoe UI', system-ui, sans-serif" font-weight="900" font-size="40" letter-spacing="3.5">MENEGHIN</text>
+    
+    <!-- Subtitle "ENERGIA, MINERAÇÃO E MEIO AMBIENTE" -->
+    <text x="200" y="145" text-anchor="middle" fill="#94a3b8" font-family="'Inter', 'Montserrat', 'Segoe UI', system-ui, sans-serif" font-weight="700" font-size="11.5" letter-spacing="1.5">ENERGIA, MINERAÇÃO E MEIO AMBIENTE</text>
+  </g>
+</svg>

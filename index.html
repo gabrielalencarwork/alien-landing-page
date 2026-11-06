@@ -570,15 +570,177 @@
         .step-title { font-size: 1.3rem; margin-bottom: 12px; color: var(--text-main); }
         .step-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
 
-        .testimonials-section { padding: 100px 0; }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-        .testimonial-card { padding: 32px; display: flex; flex-direction: column; gap: 20px; }
-        .testimonial-stars { color: #facc15; font-size: 1.2rem; letter-spacing: 2px; }
-        .testimonial-text { font-style: italic; color: #ddd; font-size: 1.05rem; flex-grow: 1; line-height: 1.6; }
-        .testimonial-author { display: flex; align-items: center; gap: 16px; margin-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 16px; }
-        .testimonial-avatar { width: 50px; height: 50px; border-radius: 50%; background: #333; object-fit: cover; }
-        .testimonial-name { font-weight: bold; color: var(--neon-green); font-size: 1.1rem; }
-        .testimonial-role { font-size: 0.85rem; color: var(--text-muted); }
+        
+        /* =========================================
+           CARROSSEL DE DEPOIMENTOS (1 POR VEZ)
+           ========================================= */
+        .testimonials-section {
+            padding: 100px 0;
+            position: relative;
+        }
+        .testimonials-carousel-wrapper {
+            position: relative;
+            max-width: 860px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .testimonials-carousel {
+            overflow: hidden;
+            width: 100%;
+            border-radius: 20px;
+            position: relative;
+        }
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+        }
+        .testimonial-card.carousel-slide {
+            min-width: 100%;
+            width: 100%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            padding: 44px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            border-radius: 20px;
+            background: rgba(15, 18, 28, 0.65);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card.carousel-slide:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.08);
+        }
+        .testimonial-stars {
+            color: #facc15;
+            font-size: 1.35rem;
+            letter-spacing: 4px;
+        }
+        .testimonial-text {
+            font-style: italic;
+            color: #e2e8f0;
+            font-size: 1.15rem;
+            line-height: 1.75;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .testimonial-avatar {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-green);
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.35);
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--neon-green);
+            font-size: 1.15rem;
+        }
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .carousel-nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(20, 24, 36, 0.85);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            backdrop-filter: blur(12px);
+            outline: none;
+            z-index: 10;
+            position: relative;
+            user-select: none;
+        }
+        .carousel-nav-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+        .carousel-nav-btn:hover {
+            background: rgba(0, 255, 136, 0.15);
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            transform: scale(1.1);
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 28px;
+            position: relative;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 0;
+        }
+        .carousel-dot:hover {
+            background: rgba(0, 255, 136, 0.5);
+        }
+        .carousel-dot.active {
+            width: 32px;
+            border-radius: 6px;
+            background: var(--neon-green);
+            box-shadow: 0 0 14px var(--neon-green-glow);
+        }
+        @media (max-width: 768px) {
+            .testimonials-carousel-wrapper {
+                gap: 10px;
+            }
+            .carousel-nav-btn {
+                display: none;
+            }
+            .testimonial-card.carousel-slide {
+                padding: 30px 20px;
+                gap: 16px;
+            }
+            .testimonial-text {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            .testimonial-avatar {
+                width: 48px;
+                height: 48px;
+            }
+            .testimonial-name {
+                font-size: 1.05rem;
+            }
+        }
+
 
         /* =========================================
            RESPONSIVIDADE (Mobile First adaptado)
@@ -591,6 +753,7 @@
             .steps-grid { grid-template-columns: 1fr; gap: 32px; }
             .founder-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .founder-grid .founder-img-container { order: -1; }
+            
         }
 
         @media (max-width: 768px) {
@@ -670,6 +833,43 @@
                 text-align: center;
             }
             .about-stats { grid-template-columns: 1fr; }
+            
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-right: 16px;
+        }
+        .lang-btn {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .lang-btn.active {
+            color: var(--neon-green);
+            text-shadow: 0 0 8px var(--neon-green-glow);
+            font-weight: 800;
+        }
+        .lang-btn:hover {
+            color: var(--neon-green);
+        }
+        .lang-divider {
+            color: var(--glass-border);
+            font-size: 0.95rem;
+        }
+        @media (max-width: 768px) {
+            .lang-switcher {
+                margin: 20px 0;
+            }
+            .lang-btn {
+                font-size: 1.1rem;
+            }
         }
         /* =========================================
            PRICING TABLE (SERVIÇOS)
@@ -683,88 +883,293 @@
             margin: 0 auto;
         }
 
+        /* =========================================
+           PRICING REDESIGN (AGENCY LEVEL)
+           ========================================= */
+        .pricing-tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 0 auto 50px;
+            background: rgba(15, 15, 25, 0.7);
+            padding: 6px;
+            border-radius: 50px;
+            border: 1px solid var(--glass-border);
+            width: fit-content;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+        }
+
+        .pricing-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pricing-tab-btn.active {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 25px var(--neon-green-glow);
+        }
+
+        .pricing-tab-btn:hover:not(.active) {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Subtle pulse to draw attention to non-active tab */
+        .pricing-tab-btn:not(.active).highlight-pulse {
+            border: 1px solid rgba(0, 255, 136, 0.35);
+            animation: subtleTabGlow 2.8s infinite ease-in-out;
+        }
+
+        @keyframes subtleTabGlow {
+            0%, 100% {
+                border-color: rgba(0, 255, 136, 0.25);
+                box-shadow: 0 0 5px rgba(0, 255, 136, 0.1);
+            }
+            50% {
+                border-color: rgba(0, 255, 136, 0.85);
+                box-shadow: 0 0 18px rgba(0, 255, 136, 0.4);
+                color: #ffffff;
+            }
+        }
+
+        .tab-mini-badge {
+            font-size: 0.72rem;
+            background: rgba(0, 255, 136, 0.15);
+            color: var(--neon-green);
+            padding: 2px 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            margin-left: 4px;
+            font-weight: 700;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-tab-btn.active .tab-mini-badge {
+            background: rgba(0, 0, 0, 0.2);
+            color: #000;
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-tabs-hint {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: -35px;
+            margin-bottom: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            opacity: 0.85;
+        }
+
+        .pricing-tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .pricing-tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            align-items: stretch;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .pricing-card {
             display: flex;
             flex-direction: column;
-            padding: 32px;
-            border-radius: 16px;
+            padding: 36px 28px;
+            border-radius: 20px;
             position: relative;
-            background: rgba(10, 10, 15, 0.6);
+            background: rgba(12, 12, 18, 0.7);
             border: 1px solid var(--glass-border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(16px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--neon-green-glow);
-            border-color: var(--neon-green);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.15);
+            border-color: rgba(0, 255, 136, 0.4);
         }
 
         .pricing-card.popular {
-            border: 1px solid var(--neon-green);
-            background: rgba(0, 255, 136, 0.05);
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
-            transform: scale(1.05);
+            border: 2px solid var(--neon-green);
+            background: rgba(0, 255, 136, 0.04);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.18);
+            transform: scale(1.03);
             z-index: 2;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-6px);
+            box-shadow: 0 0 45px rgba(0, 255, 136, 0.35);
         }
 
         .popular-badge {
             position: absolute;
-            top: -12px;
+            top: -14px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--neon-green);
             color: #000;
             font-size: 0.8rem;
-            font-weight: bold;
-            padding: 4px 16px;
-            border-radius: 20px;
+            font-weight: 800;
+            padding: 4px 18px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            box-shadow: 0 0 15px var(--neon-green-glow);
         }
 
-        .pricing-icon {
+        .offer-badge {
+            background: rgba(255, 255, 255, 0.12) !important;
+            color: var(--text-main) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: none !important;
+        }
+
+        .scale-badge {
+            background: linear-gradient(90deg, #00ff88, #00d2ff) !important;
+            color: #000 !important;
+        }
+
+        .pricing-icon-wrapper {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pricing-icon-wrapper img {
+            width: 26px;
+            height: 26px;
+            filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover .pricing-icon-wrapper img {
+            transform: scale(1.15);
+        }
+
+        .pricing-single-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.2);
             color: var(--neon-green);
-            margin-bottom: 16px;
+            margin: 0 auto 20px;
+        }
+
+        .pricing-single-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--neon-green);
         }
 
         .pricing-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 800;
+            text-align: center;
+            font-family: var(--font-heading);
         }
         
         .pricing-subtitle {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             color: var(--text-muted);
             margin-bottom: 24px;
-            min-height: 40px;
-        }
-
-        .pricing-price {
-            margin-bottom: 8px;
+            text-align: center;
+            min-height: 48px;
+            line-height: 1.5;
             display: flex;
-            align-items: baseline;
-            gap: 8px;
+            align-items: center;
+            justify-content: center;
         }
 
-        .pricing-price s {
+        .pricing-price-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 18px 16px;
+            margin-bottom: 28px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .price-label {
+            font-size: 0.78rem;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .pricing-price .value {
-            font-size: 2.5rem;
-            color: var(--neon-green);
+        .price-val {
+            font-size: 2.4rem;
             font-weight: 800;
+            color: var(--text-main);
+            font-family: var(--font-heading);
+            line-height: 1.1;
         }
 
-        .pricing-promo-text {
-            font-size: 0.8rem;
+        .price-period {
+            font-size: 0.95rem;
+            font-weight: normal;
+            color: var(--text-muted);
+        }
+
+        .price-tag {
+            font-size: 0.78rem;
             color: var(--neon-green);
-            background: rgba(0, 255, 136, 0.1);
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 24px;
+            font-weight: 600;
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-top: 2px;
+            letter-spacing: 0.3px;
+        }
+
+        .price-tag.highlight {
+            color: #000;
+            background: var(--neon-green);
+            border-color: var(--neon-green);
+            font-weight: 700;
         }
 
         .pricing-features {
@@ -779,7 +1184,8 @@
             gap: 12px;
             margin-bottom: 16px;
             font-size: 0.95rem;
-            color: #ccc;
+            color: #ddd;
+            line-height: 1.4;
         }
 
         .pricing-features li svg {
@@ -794,48 +1200,26 @@
             text-align: center;
             width: 100%;
             margin-top: auto;
+            padding: 14px 24px;
+            font-size: 1rem;
         }
 
-        .pricing-accordion {
-            width: 100%;
-            margin-bottom: 24px;
-        }
-        .pricing-accordion summary {
-            cursor: pointer;
-            color: var(--neon-green);
-            font-weight: 600;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 8px;
-            background: rgba(0, 255, 136, 0.05);
-            transition: all 0.3s ease;
-        }
-        .pricing-accordion summary:hover {
-            background: rgba(0, 255, 136, 0.1);
-        }
-        .pricing-accordion summary::-webkit-details-marker {
-            display: none;
-        }
-        .pricing-accordion summary::after {
-            content: '▼';
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-        .pricing-accordion[open] summary::after {
-            transform: rotate(180deg);
-        }
-        .accordion-content {
-            padding-top: 16px;
-            animation: accordionFade 0.4s ease forwards;
-        }
-        @keyframes accordionFade {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 900px) {
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .pricing-tabs-wrapper {
+                width: 100%;
+                flex-direction: column;
+                border-radius: 20px;
+            }
+            .pricing-tab-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         /* =========================================
@@ -926,7 +1310,215 @@
             }
             .ghost-text { font-size: 2rem; }
         }
+
+        /* =========================================
+           NOVAS REDES SOCIAIS E CLIENTES
+           ========================================= */
+        .footer-social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-muted);
+        }
+        .social-btn .icon-svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            transition: fill 0.3s ease;
+        }
+        .social-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        .social-btn[title="Instagram"]:hover {
+            color: #e1306c;
+            box-shadow: 0 0 15px rgba(225, 48, 108, 0.4);
+            border-color: rgba(225, 48, 108, 0.4);
+        }
+        .social-btn[title="Facebook"]:hover {
+            color: #1877f2;
+            box-shadow: 0 0 15px rgba(24, 119, 242, 0.4);
+            border-color: rgba(24, 119, 242, 0.4);
+        }
+        .social-btn[title="TikTok"]:hover {
+            color: #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .social-btn[title="LinkedIn"]:hover {
+            color: #0a66c2;
+            box-shadow: 0 0 15px rgba(10, 102, 194, 0.4);
+            border-color: rgba(10, 102, 194, 0.4);
+        }
+        .social-btn[title="YouTube"]:hover {
+            color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            border-color: rgba(255, 0, 0, 0.4);
+        }
+        @media (max-width: 768px) {
+            .footer-social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Seção Clientes Abduzidos */
+        .clients-section {
+            padding: 100px 0;
+            position: relative;
+        }
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            justify-content: center;
+            align-items: center;
+        }
+        .client-card {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+        .client-card img {
+            max-height: 60px;
+            max-width: 100%;
+            object-fit: contain;
+            filter: opacity(85%) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .client-card img.logo-lighten {
+            filter: brightness(0) invert(1) opacity(85%) drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        .client-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.25);
+            background: rgba(20, 20, 30, 0.6);
+        }
+        .client-card:hover img {
+            filter: opacity(100%) drop-shadow(0 0 10px rgba(0, 255, 136, 0.85));
+        }
+        .client-card:hover img.logo-lighten {
+            filter: brightness(0) invert(1) opacity(100%) drop-shadow(0 0 10px rgba(0, 255, 136, 0.85));
+        }
+    
+        /* =========================================
+           MANIFESTO ALIEN (COM RECOLHIMENTO MOBILE)
+           ========================================= */
+        .manifesto-card {
+            text-align: left;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            background: rgba(20, 20, 30, 0.4);
+            backdrop-filter: blur(16px);
+            padding: 36px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.05);
+            position: relative;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .manifesto-fade {
+            display: none;
+        }
+
+        .manifesto-toggle-btn {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .manifesto-card {
+                padding: 24px 20px;
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+            
+            .manifesto-card.collapsed {
+                max-height: 280px;
+                overflow: hidden;
+            }
+            
+            .manifesto-card.collapsed .manifesto-fade {
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 140px;
+                background: linear-gradient(to bottom, rgba(5, 5, 8, 0), rgba(5, 5, 8, 0.9) 70%, rgba(5, 5, 8, 1) 100%);
+                pointer-events: none;
+                border-radius: 0 0 24px 24px;
+            }
+            
+            .manifesto-toggle-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                margin-top: 24px;
+                padding: 12px 26px;
+                font-size: 0.95rem;
+                cursor: pointer;
+                background: rgba(0, 255, 136, 0.08);
+                border: 1px solid var(--neon-green);
+                color: var(--neon-green);
+                border-radius: 50px;
+                transition: all 0.3s ease;
+                font-family: var(--font-heading);
+                font-weight: 600;
+                box-shadow: 0 0 15px rgba(0, 255, 136, 0.15);
+            }
+            
+            .manifesto-toggle-btn:hover {
+                background: var(--neon-green);
+                color: #000;
+                box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+            }
+            
+            .manifesto-toggle-btn svg {
+                width: 18px;
+                height: 18px;
+                transition: transform 0.3s ease;
+            }
+
+            .manifesto-toggle-btn.expanded svg {
+                transform: rotate(180deg);
+            }
+        }
+
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V5734NJZ1D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-V5734NJZ1D');
+    </script>
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -967,11 +1559,18 @@
         </button>
         <nav class="alien-nav">
             <a href="#hero">Home</a>
-            <a href="#sobre">Quem Somos</a>
+            <a href="#manifesto">Manifesto</a>
             <a href="#servicos">Serviços</a>
             <a href="#portfolio">Portfólio</a>
             <a href="#diferenciais">Diferenciais</a>
             <a href="#faq">FAQ</a>
+            <div class="lang-switcher">
+                <a href="index.html" class="lang-btn active">PT</a>
+                <span class="lang-divider">|</span>
+                <a href="index-en.html" class="lang-btn">EN</a>
+                <span class="lang-divider">|</span>
+                <a href="index-es.html" class="lang-btn">ES</a>
+            </div>
             <a href="#contato" class="btn-outline" style="padding: 8px 24px;">Contato</a>
         </nav>
     </header>
@@ -981,35 +1580,57 @@
         <!-- INÍCIO: HERO SECTION -->
         <section id="hero" class="hero-section">
             <div class="container hero-content">
-                <h1 class="hero-title">Pare de Gastar com Marketing do Passado.<br><span class="neon-text">Invista no Futuro do seu Negócio.</span></h1>
-                <p class="hero-subtitle">Unimos inteligência de dados e design de alto impacto para construir ecossistemas de vendas que trabalham continuamente pela expansão da sua marca.</p>
+                <h1 class="hero-title">Dados. Estratégia. Crescimento.<br><span class="neon-text">Inconformados com resultados medíocres.</span></h1>
+                <p class="hero-subtitle">Chega de marketing baseado em achismos. Cada decisão é guiada por dados e estratégias inteligentes para crescer o seu negócio.</p>
                 
-                <a href="#contato" class="btn-neon">Explore o Futuro</a>
+                <a href="https://wa.me/5531984706088?text=Solicitar%20Diagn%C3%B3stico%20Gratuito" target="_blank" class="btn-neon">Solicitar Diagnóstico Gratuito</a>
                 
                 <p class="hero-mechanism">Inteligência Alienígena Aplicada</p>
             </div>
         </section>
         <!-- FIM: HERO SECTION -->
 
-        <!-- INÍCIO: QUEM SOMOS -->
-        <section id="sobre" class="about-section">
+        <!-- INÍCIO: MANIFESTO ALIEN (SUBSTITUI QUEM SOMOS) -->
+        <section id="manifesto" class="about-section" style="padding-top: 60px; padding-bottom: 60px;">
             <div class="container">
-                <div class="about-grid">
-                    <div class="about-text">
-                        <h2>Quem <span class="neon-text">Somos</span></h2>
-                        <p>A <strong>Alien Marketing Inteligente</strong> nasceu da paixão por transformar negócios através do digital. Combinamos criatividade, tecnologia e estratégia para criar experiências que realmente convertem.</p>
-                        <p>Nossa especialidade é desenvolver sites profissionais modernos e gerenciar campanhas de tráfego pago inteligente para elevar o nível do seu negócio, posicionando a sua marca no digital e escalando o seu faturamento atual.</p>
-                        <p>Cada projeto é único e merece uma estratégia exclusiva. É assim que entregamos resultados consistentes para nossos clientes.</p>
+                <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+                    <h2 style="font-size: 2.8rem; margin-bottom: 10px;">Manifesto <span class="neon-text">Alien</span></h2>
+                    <p style="font-size: 1.2rem; font-style: italic; color: var(--text-muted); margin-bottom: 40px;">"Não somos apenas uma agência."</p>
+                    
+                    <div class="manifesto-card" id="manifestoBox">
+                        <p>A Alien nasceu da inconformidade.</p>
+                        <p>Vivemos em um mercado onde milhares de empresas possuem excelentes produtos, oferecem serviços de qualidade e contam com profissionais extremamente competentes.</p>
+                        <p>Mesmo assim, muitas delas continuam invisíveis. Não porque seus produtos sejam ruins. Não porque seus serviços não funcionem. Mas porque a forma como se comunicam não traduz o verdadeiro valor que entregam.</p>
+                        
+                        <p>Nós acreditamos que o marketing não deve criar ilusões. Ele deve revelar valor. Marketing não é convencer alguém a comprar algo ruim. Marketing é fazer com que as pessoas certas descubram algo realmente bom.</p>
+                        
+                        <p>É por isso que a Alien existe. Para transformar dados em inteligência. Inteligência em estratégia. Estratégia em crescimento. E crescimento em histórias reais de sucesso.</p>
+                        
+                        <p>Cada cliente que entra na Alien inicia uma jornada. Chamamos essa jornada de <span class="neon-text" style="font-weight: 600;">Abdução</span>. Porque acreditamos que todo negócio pode evoluir quando passa a enxergar seu marketing de uma forma completamente diferente.</p>
+                        
+                        <p>Ao final dessa jornada, esperamos apenas uma coisa. Que o cliente perceba que o problema nunca foi seu produto. Nunca foi seu serviço. O problema era apenas a forma como ele era comunicado ao mundo.</p>
+                        
+                        <p style="text-align: center; font-size: 1.4rem; color: var(--text-main); font-weight: 600; margin-top: 24px; letter-spacing: 0.5px;">
+                            Quando isso acontece...<br>
+                            O crescimento deixa de ser uma possibilidade.<br>
+                            <span class="neon-text">E passa a ser previsível.</span>
+                        </p>
+                        <div class="manifesto-fade" id="manifestoFade"></div>
                     </div>
-                    <div class="about-video-container" style="border-radius: 24px; overflow: hidden; border: 1px solid var(--glass-border); box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);">
-                        <video autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                            <source src="assets/Video_Alien_4.mp4" type="video/mp4">
-                        </video>
+
+                    <button type="button" class="btn-outline manifesto-toggle-btn" id="manifestoToggleBtn" data-expand-text="Continuar lendo o Manifesto" data-collapse-text="Mostrar menos">
+                        <span id="manifestoToggleText">Continuar lendo o Manifesto</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+
+                    <!-- Logo Centralizada ao final do Manifesto -->
+                    <div style="text-align: center; margin-top: 48px;">
+                        <img src="assets/Favicon s Fundo svg.svg" alt="Alien Logo" style="max-height: 85px; width: auto; object-fit: contain; filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.6));">
                     </div>
                 </div>
             </div>
         </section>
-        <!-- FIM: QUEM SOMOS -->
+        <!-- FIM: MANIFESTO ALIEN -->
 
 
 
@@ -1049,164 +1670,191 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
                         </div>
                         <h3 class="step-title">Evolução Alien</h3>
-                        <p class="step-desc">Apresentamos o seu projeto pronto (site) e damos o start nas campanhas de tráfego para iniciar uma nova fase no seu negócio.</p>
+                        <p class="step-desc">Apresentamos o plano de ação pronto para iniciar uma nova fase no seu negócio.</p>
                     </div>
                 </div>
             </div>
         </section>
         <!-- FIM: COMO FUNCIONA -->
 
-        <!-- INÍCIO: SERVIÇOS -->
+        <!-- INÍCIO: SERVIÇOS E PLANOS -->
         <section id="servicos" class="services-section">
             <div class="container">
-                <h2 class="section-title">Nossa <span class="neon-text">Inteligência</span></h2>
-                
-                <div class="pricing-grid">
-                    <!-- Plano 1: Gestão de Tráfego -->
-                    <div class="pricing-card">
-                        <div class="pricing-icon" style="display: flex; gap: 12px; margin-bottom: 16px; justify-content: center;">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
-                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tiktok.svg" style="width:24px; height:24px; filter: brightness(0) saturate(100%) invert(64%) sepia(85%) saturate(2222%) hue-rotate(107deg) brightness(102%) contrast(106%);">
-                        </div>
-                        <h3 class="pricing-title" style="text-align: center;">Gestão de Tráfego</h3>
-                        <div class="pricing-subtitle" style="text-align: center; min-height: 48px;">Campanhas estratégicas nas principais redes para multiplicar suas vendas</div>
-                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px; margin-bottom: 16px;">
-                            <span style="font-size: 1rem; color: var(--text-muted);">A partir de</span>
-                            <span class="value" style="font-size: 2.2rem; line-height: 1;">R$999</span>
-                            <span style="font-size: 0.9rem; color: var(--neon-green);">no Plano Start</span>
-                        </div>
-                        
-                        <details class="pricing-accordion">
-                            <summary>Ver Planos e Detalhes</summary>
-                            <div class="accordion-content">
-                                <div style="text-align: left; margin-bottom: 24px; background: rgba(0, 255, 136, 0.05); padding: 16px; border-radius: 8px; border: 1px solid rgba(0, 255, 136, 0.2);">
-                                    <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                                        <h4 class="neon-text" style="font-size: 1.1rem; margin-bottom: 4px;">Plano Premium</h4>
-                                        <span style="font-size: 0.85rem; color: #ccc;">Gerenciamento Google Ads, Meta Ads e Tik Tok Ads</span><br>
-                                        <div style="margin-top: 8px;"><s>R$3.000</s> <strong style="color:var(--neon-green); font-size: 1.2rem; margin-left: 8px;">R$2.500</strong></div>
-                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos Anúncios</span>
-                                    </div>
-                                    <div style="margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                                        <h4 class="neon-text" style="font-size: 1.1rem; margin-bottom: 4px;">Plano Master</h4>
-                                        <span style="font-size: 0.85rem; color: #ccc;">Gerenciamento Google Ads e Meta Ads</span><br>
-                                        <div style="margin-top: 8px;"><s>R$2.000</s> <strong style="color:var(--neon-green); font-size: 1.2rem; margin-left: 8px;">R$1.800</strong></div>
-                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos Anúncios</span>
-                                    </div>
-                                    <div>
-                                        <h4 class="neon-text" style="font-size: 1.1rem; margin-bottom: 4px;">Plano Start</h4>
-                                        <span style="font-size: 0.85rem; color: #ccc;">Meta Ads ou Google Ads</span><br>
-                                        <div style="margin-top: 8px;"><s>R$1.200</s> <strong style="color:var(--neon-green); font-size: 1.2rem; margin-left: 8px;">R$1.000</strong></div>
-                                        <span style="font-size:0.75rem; color:var(--text-muted)">+ Investimento mensal nos Anúncios</span>
-                                    </div>
-                                </div>
-                                
-                                <ul class="pricing-features" style="margin-bottom: 0;">
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Análise completa do negócio</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Criação de campanhas no Meta Ads</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Criação de campanhas no Google Ads</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Criação de campanhas no Tik Tok Ads</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Públicos segmentados estrategicamente</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Relatórios de performance</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Otimização contínua</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Suporte via WhatsApp</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Reuniões mensais de alinhamento</li>
-                                </ul>
-                            </div>
-                        </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon pricing-btn">Quero evoluir meu negócio</a>
-                    </div>
+                <h2 class="section-title" style="margin-bottom: 12px;">Nossa <span class="neon-text">Inteligência</span></h2>
+                <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px;">
+                    Escolha a solução ideal para acelerar o crescimento do seu negócio
+                </p>
 
-                    <!-- Plano 2: Site | Landing Page -->
-                    <div class="pricing-card">
-                        <div class="pricing-icon">
-                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        </div>
-                        <h3 class="pricing-title" style="text-align: center;">Site | Landing Page</h3>
-                        <div class="pricing-subtitle" style="color:var(--neon-green); text-align: center; min-height: 48px;">Página focada em conversão e presença digital</div>
-                        
-                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px;">
-                            <s>R$1.300</s>
-                            <span class="value" style="font-size: 2.2rem; line-height: 1;">R$800</span>
-                        </div>
-                        
-                        <details class="pricing-accordion">
-                            <summary>Ver Planos e Detalhes</summary>
-                            <div class="accordion-content">
-                                <ul class="pricing-features" style="margin-bottom: 0;">
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Design focado em conversão</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copy persuasiva inclusa</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Totalmente responsivo</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Carregamento ultra-rápido</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 1 ano de hospedagem grátis</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Pixel de rastreamento</li>
-                                </ul>
-                            </div>
-                        </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negócio</a>
-                    </div>
+                <!-- Navigation Tabs (Pills) -->
+                <div class="pricing-tabs-wrapper">
+                    <button class="pricing-tab-btn active" onclick="switchPricingTab('trafego')">
+                        🚀 Gestão de Tráfego
+                    </button>
+                    <button class="pricing-tab-btn highlight-pulse" onclick="switchPricingTab('solucoes')">
+                        ⚡ Soluções & IA <span class="tab-mini-badge">Sites, IA & Google</span>
+                    </button>
+                </div>
+                <p class="pricing-tabs-hint">
+                    💡 <span>Clique nas abas acima para alternar entre <strong>Gestão de Tráfego</strong> e <strong>Soluções com IA & Websites</strong></span>
+                </p>
 
-                    <!-- Plano 3: Tráfego Pago + Site -->
-                    <div class="pricing-card popular">
-                        <div class="popular-badge">Mais Popular</div>
-                        <div class="pricing-icon">
-                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                        </div>
-                        <h3 class="pricing-title" style="text-align: center;">Tráfego Pago + Site</h3>
-                        <div class="pricing-subtitle" style="color:var(--neon-green); text-align: center; min-height: 48px;">O ecossistema completo para suas vendas</div>
+                <!-- TAB 1: GESTÃO DE TRÁFEGO -->
+                <div id="tab-trafego" class="pricing-tab-content active">
+                    <div class="pricing-grid">
                         
-                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px;">
-                            <div style="display: flex; align-items: baseline; gap: 8px;">
-                                <span class="value" style="font-size: 2.2rem; line-height: 1;">R$1.000</span>
-                                <span style="font-size: 0.9rem; color: var(--text-muted);">/mês</span>
+                        <!-- 1. Plano Start -->
+                        <div class="pricing-card">
+                            <div class="popular-badge offer-badge">Oferta Especial</div>
+                            
+                            <h3 class="pricing-title">Plano Start</h3>
+                            <p class="pricing-subtitle">Ideal para iniciar captação ativa com alta eficiência e foco em 1 plataforma principal.</p>
+                            
+                            <div class="pricing-price-box">
+                                <span class="price-label">Investimento Mensal</span>
+                                <div class="price-val">R$ 799<span class="price-period">/mês</span></div>
+                                <span class="price-tag">Gestão em 1 Plataforma</span>
                             </div>
-                            <div class="pricing-promo-text" style="margin-top: 4px; text-align: center;">Bônus: Site Gratuito (Tempo Limitado)</div>
-                        </div>
-                        
-                        <details class="pricing-accordion">
-                            <summary>Ver Planos e Detalhes</summary>
-                            <div class="accordion-content">
-                                <ul class="pricing-features" style="margin-bottom: 0;">
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Gestão de Tráfego Completa</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Site ou LP de Alta Conversão</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Estratégia de funil de vendas</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Relatórios de performance semanais</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Reuniões de acompanhamento</li>
-                                </ul>
-                            </div>
-                        </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon pricing-btn">Quero evoluir meu negócio</a>
-                    </div>
 
-                    <!-- Plano 4: Ecommerce -->
-                    <div class="pricing-card">
-                        <div class="pricing-icon">
-                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                            <ul class="pricing-features">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gestão em 1 plataforma à escolha (Meta, Google ou TikTok)</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Análise de mercado & Estratégia de entrada</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Públicos segmentados estrategicamente</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Relatórios mensais de performance</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Suporte direto via WhatsApp</li>
+                            </ul>
+
+                            <a href="https://wa.me/5531984706088?text=Quero%20saber%20mais%20sobre%20o%20Plano%20Start" target="_blank" class="btn-outline pricing-btn">Quero Saber Mais</a>
                         </div>
-                        <h3 class="pricing-title" style="text-align: center;">Ecommerce</h3>
-                        <div class="pricing-subtitle" style="text-align: center; min-height: 48px;">Loja Virtual Completa para vender 24h por dia</div>
-                        
-                        <div class="pricing-price" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100px; gap: 4px;">
-                            <span style="font-size: 1rem; color: var(--text-muted);">A partir de</span>
-                            <span class="value" style="font-size: 2.2rem; line-height: 1;">R$2.500</span>
-                        </div>
-                        
-                        <details class="pricing-accordion">
-                            <summary>Ver Planos e Detalhes</summary>
-                            <div class="accordion-content">
-                                <ul class="pricing-features" style="margin-bottom: 0;">
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Layout personalizado e moderno</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Integração com Pix e Cartão</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Cálculo de frete integrado</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Painel administrativo simples</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Cadastro de produtos</li>
-                                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Otimização para SEO</li>
-                                </ul>
+
+                        <!-- 2. Plano Advantage (Mais Escolhido) -->
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">⚡ Mais Escolhido</div>
+                            
+                            <h3 class="pricing-title">Plano Advantage</h3>
+                            <p class="pricing-subtitle">Para empresas em expansão que buscam escalar volume combinando 2 plataformas e Remarketing.</p>
+                            
+                            <div class="pricing-price-box">
+                                <span class="price-label">Investimento Mensal</span>
+                                <div class="price-val">R$ 1.500<span class="price-period">/mês</span></div>
+                                <span class="price-tag highlight">Gestão em 2 Plataformas</span>
                             </div>
-                        </details>
-                        <a href="https://wa.me/5573998529223" target="_blank" class="btn-outline pricing-btn" style="padding: 12px 24px;">Quero evoluir meu negócio</a>
+
+                            <ul class="pricing-features">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gestão em até 2 plataformas combinadas (ex: Meta + Google)</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Acesso ao Dashboard Alien (métricas em tempo real)</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Estratégia de Remarketing de alta conversão</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Otimização avançada contínua & Testes A/B</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Suporte prioritário via WhatsApp</li>
+                            </ul>
+
+                            <a href="https://wa.me/5531984706088?text=Quero%20saber%20mais%20sobre%20o%20Plano%20Advantage" target="_blank" class="btn-neon pricing-btn">Quero Saber Mais</a>
+                        </div>
+
+                        <!-- 3. Plano Performance -->
+                        <div class="pricing-card">
+                            <div class="popular-badge scale-badge">🚀 Escala Máxima</div>
+                            
+                            <h3 class="pricing-title">Plano Performance</h3>
+                            <p class="pricing-subtitle">Para marcas consolidadas que exigem domínio em 3 plataformas e Inteligência de Dados.</p>
+                            
+                            <div class="pricing-price-box">
+                                <span class="price-label">Investimento Mensal</span>
+                                <div class="price-val">R$ 2.500<span class="price-period">/mês</span></div>
+                                <span class="price-tag">Gestão em 3 Plataformas</span>
+                            </div>
+
+                            <ul class="pricing-features">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gestão completa nas 3 plataformas (Meta + Google + TikTok)</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Dashboard Alien (tempo real) & Inteligência de Dados (BI)</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Funil completo de conversão, aquisição e retenção</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Reuniões periódicas de alinhamento estratégico</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gestor de conta dedicado exclusivo</li>
+                            </ul>
+
+                            <a href="https://wa.me/5531984706088?text=Quero%20saber%20mais%20sobre%20o%20Plano%20Performance" target="_blank" class="btn-outline pricing-btn">Quero Saber Mais</a>
+                        </div>
                     </div>
                 </div>
+
+                <!-- TAB 2: SOLUÇÕES & IA -->
+                <div id="tab-solucoes" class="pricing-tab-content">
+                    <div class="pricing-grid">
+                        
+                        <!-- 1. Site / Landing Page -->
+                        <div class="pricing-card">
+                            <div class="popular-badge offer-badge">💻 Presença Digital</div>
+                            
+                            <h3 class="pricing-title">Site | Landing Page</h3>
+                            <p class="pricing-subtitle">Página de alta performance e neuro-design para converter visitantes em clientes.</p>
+                            
+                            <div class="pricing-price-box">
+                                <span class="price-label">Planos a partir de</span>
+                                <div class="price-val">R$ 79<span class="price-period">/mês</span></div>
+                                <span class="price-tag">Hospedagem inclusa</span>
+                            </div>
+
+                            <ul class="pricing-features">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Design focado em alta conversão</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copywriting persuasivo incluso</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Totalmente responsivo e mobile-first</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Carregamento ultra-rápido</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Hospedagem + Domínio inclusos</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Instalação de Pixels & Google Tags</li>
+                            </ul>
+
+                            <a href="https://wa.me/5531984706088?text=Quero%20saber%20mais%20sobre%20Site%20e%20Landing%20Page" target="_blank" class="btn-outline pricing-btn">Quero Saber Mais</a>
+                        </div>
+
+                        <!-- 2. Automação com IA -->
+                        <div class="pricing-card popular">
+                            <div class="popular-badge">🤖 IA Especializada</div>
+                            
+                            <h3 class="pricing-title">Automação com IA</h3>
+                            <p class="pricing-subtitle">Agentes e chatbots de IA para automatizar atendimento, qualificação e conversão.</p>
+                            
+                            <div class="pricing-price-box">
+                                <span class="price-label">Investimento a partir de</span>
+                                <div class="price-val">R$ 1.500</div>
+                                <span class="price-tag highlight">Atendimento 24/7 sem interrupção</span>
+                            </div>
+
+                            <ul class="pricing-features">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Chatbots e Agentes de IA no WhatsApp & Instagram</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Qualificação automática de leads em tempo real</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Integração inteligente com seu CRM</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Envio e triagem automática de e-mails</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Redução drástica do custo operacional</li>
+                            </ul>
+
+                            <a href="https://wa.me/5531984706088?text=Quero%20saber%20mais%20sobre%20Automa%C3%A7%C3%A3o%20com%20IA" target="_blank" class="btn-neon pricing-btn">Quero Saber Mais</a>
+                        </div>
+
+                        <!-- 3. Google Meu Negócio -->
+                        <div class="pricing-card">
+                            <div class="popular-badge offer-badge">📍 SEO Local</div>
+                            
+                            <h3 class="pricing-title">Google Meu Negócio</h3>
+                            <p class="pricing-subtitle">Domine as buscas locais e apareça no topo do Google e Google Maps.</p>
+                            
+                            <div class="pricing-price-box">
+                                <span class="price-label">Investimento Único</span>
+                                <div class="price-val">R$ 350</div>
+                                <span class="price-tag">Pagamento único</span>
+                            </div>
+
+                            <ul class="pricing-features">
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Configuração e Otimização completa do Perfil</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Cadastro estratégico de Palavras-Chave</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Geolocalização e Pins otimizados no Maps</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Postagens e tratamento inicial de imagens</li>
+                                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Estratégia acelerada para obter avaliações 5 estrelas</li>
+                            </ul>
+
+                            <a href="https://wa.me/5531984706088?text=Quero%20saber%20mais%20sobre%20Google%20Meu%20Neg%C3%B3cio" target="_blank" class="btn-outline pricing-btn">Quero Saber Mais</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
         <!-- FIM: SERVIÇOS -->
@@ -1252,6 +1900,42 @@
                         <h4 class="neon-text">Acessar Site</h4>
                         <span>Clínica Positive</span>
                     </a>
+
+                    <a href="https://brincakidslocacoes.vercel.app/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
+                        <img src="assets/logo_brincakids_trans.png" alt="Logo BrincaKids Locações" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                        <h4 class="neon-text">Acessar Site</h4>
+                        <span>BrincaKids Locações</span>
+                    </a>
+
+                    <a href="https://www.consultorioonline.site" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
+                        <img src="assets/logo_consultorio_online.png" alt="Logo Consultório Online" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                        <h4 class="neon-text">Acessar Site</h4>
+                        <span>Consultório Online</span>
+                    </a>
+
+                    <a href="https://garagem844-landing-page.vercel.app/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
+                        <img src="assets/logo_garagem844.svg" alt="Logo Garagem 844" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                        <h4 class="neon-text">Acessar Site</h4>
+                        <span>Garagem 844</span>
+                    </a>
+
+                    <a href="https://site-atsa-alien.vercel.app/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
+                        <img src="assets/logo_atsa.png" alt="Logo Atsa" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                        <h4 class="neon-text">Acessar Site</h4>
+                        <span>Atsa - Yoga e Eneagrama - Polyana Lafetá</span>
+                    </a>
+
+                    <a href="https://move-gym-nu.vercel.app/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
+                        <img src="assets/logo_movegym.svg" alt="Logo Move Gym" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                        <h4 class="neon-text">Acessar Site</h4>
+                        <span>Move Gym - Academia e Bem estar</span>
+                    </a>
+
+                    <a href="https://milena-cristhyne-imoveis.vercel.app/" target="_blank" class="portfolio-card glass-panel" style="display: block; text-decoration: none;">
+                        <img src="assets/logo_milena.svg" alt="Logo Milena Cristhyne" class="portfolio-alien-icon" style="border-radius: 12px; filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5)); object-fit: contain;">
+                        <h4 class="neon-text">Acessar Site</h4>
+                        <span>Milena Cristhyne - Corretora de Imóveis</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1262,42 +1946,86 @@
             <div class="container">
                 <h2 class="section-title">O que dizem <span class="neon-text">nossos clientes</span></h2>
                 
-                <div class="testimonials-grid">
-                    <div class="testimonial-card glass-panel">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"A equipe da Alien Marketing transformou completamente nossa presença digital. O novo site não apenas ficou com um design incrível, mas começou a gerar leads qualificados na primeira semana!"</p>
-                        <div class="testimonial-author">
-                            <img src="assets/depoimento_danilo.png" class="testimonial-avatar" alt="Danilo Vocari" style="object-fit: cover;">
-                            <div>
-                                <div class="testimonial-name">Danilo Vocari</div>
-                                <div class="testimonial-role">Empresário</div>
+                <div class="testimonials-carousel-wrapper">
+                    <button type="button" class="carousel-nav-btn prev-btn" id="testimonial-prev" aria-label="Depoimento anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    
+                    <div class="testimonials-carousel" id="testimonialsCarousel">
+                        <div class="testimonials-track" id="testimonialsTrack">
+                            <div class="testimonial-card glass-panel carousel-slide">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"A equipe da Alien Marketing transformou completamente nossa presença digital. O novo site não apenas ficou com um design incrível, mas começou a gerar leads qualificados na primeira semana!"</p>
+                                <div class="testimonial-author">
+                                    <img src="assets/depoimento_danilo.png" class="testimonial-avatar" alt="Danilo Vocari">
+                                    <div>
+                                        <div class="testimonial-name">Danilo Vocari</div>
+                                        <div class="testimonial-role">Empresário</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card glass-panel carousel-slide">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Trabalho impecável e atendimento muito próximo. Eles realmente entendem do que estão falando quando o assunto é tráfego pago e conversão. Nossas vendas aumentaram 40%."</p>
+                                <div class="testimonial-author">
+                                    <img src="assets/depoimento_yara.png" class="testimonial-avatar" alt="Yara Medeiros">
+                                    <div>
+                                        <div class="testimonial-name">Yara Medeiros</div>
+                                        <div class="testimonial-role">Empreendedora</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card glass-panel carousel-slide">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Fizemos a criação da landing page para um lançamento. O resultado foi acima do esperado e o suporte é sensacional."</p>
+                                <div class="testimonial-author">
+                                    <img src="assets/depoimento_andre.png" class="testimonial-avatar" alt="André Filipe">
+                                    <div>
+                                        <div class="testimonial-name">André Filipe</div>
+                                        <div class="testimonial-role">Engenheiro Civil e Trader</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card glass-panel carousel-slide">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Passando pra te parabenizar pelo excelente trabalho.. desde que começamos as campanhas e fizemos as alterações nas palavras chaves que você sugeriu o nosso resultado melhorou muito, a quantidade de leads aumentou bastante. Agora é só pra cimaa. Sem dúvidas você entrega muito o que promete."</p>
+                                <div class="testimonial-author">
+                                    <img src="assets/depoimento_ana.jpg" class="testimonial-avatar" alt="Ana Ribeiro">
+                                    <div>
+                                        <div class="testimonial-name">Ana Ribeiro</div>
+                                        <div class="testimonial-role">Empresária Sim Saúde</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-card glass-panel carousel-slide">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Sou extremamente grata a Alien por me ajudar passo a passo na realização de um grande sonho, que eu mesma sequer cogitava ser possível ganhar vida. A Alien propõe um trabalho de extrema confiança, dedicação e modernidade, nos fazendo acreditar que é possível desburocratizar ideias e ainda assim, acessar suas preciosas essências sem que tudo se resuma a somente um produto. A Alien é arte."</p>
+                                <div class="testimonial-author">
+                                    <img src="assets/depoimento_barbara.png" class="testimonial-avatar" alt="Bárbara Luiza">
+                                    <div>
+                                        <div class="testimonial-name">Bárbara Luiza</div>
+                                        <div class="testimonial-role">Psicanalista</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="testimonial-card glass-panel">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Trabalho impecável e atendimento muito próximo. Eles realmente entendem do que estão falando quando o assunto é tráfego pago e conversão. Nossas vendas aumentaram 40%."</p>
-                        <div class="testimonial-author">
-                            <img src="assets/depoimento_yara.png" class="testimonial-avatar" alt="Yara Medeiros" style="object-fit: cover;">
-                            <div>
-                                <div class="testimonial-name">Yara Medeiros</div>
-                                <div class="testimonial-role">Empreendedora</div>
-                            </div>
-                        </div>
-                    </div>
+                    <button type="button" class="carousel-nav-btn next-btn" id="testimonial-next" aria-label="Próximo depoimento">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
 
-                    <div class="testimonial-card glass-panel">
-                        <div class="testimonial-stars">★★★★★</div>
-                        <p class="testimonial-text">"Fizemos a criação da landing page para um lançamento. O resultado foi acima do esperado e o suporte é sensacional."</p>
-                        <div class="testimonial-author">
-                            <img src="assets/depoimento_andre.png" class="testimonial-avatar" alt="André Filipe" style="object-fit: cover;">
-                            <div>
-                                <div class="testimonial-name">André Filipe</div>
-                                <div class="testimonial-role">Engenheiro Civil e Trader</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="carousel-dots" id="testimonialDots">
+                    <button type="button" class="carousel-dot active" aria-label="Slide 1"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 2"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 3"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 4"></button>
+                    <button type="button" class="carousel-dot" aria-label="Slide 5"></button>
                 </div>
             </div>
         </section>
@@ -1315,6 +2043,91 @@
             </div>
         </section>
         <!-- FIM: DIFERENCIAIS -->
+
+        <!-- INÍCIO: CLIENTES ABDUZIDOS -->
+        <section id="clientes" class="clients-section">
+            <div class="container">
+                <h2 class="section-title">Alguns dos Nossos Clientes <span class="neon-text">Abduzidos</span></h2>
+                
+                <div class="clients-grid">
+                    <!-- 1. Sim Saúde -->
+                    <div class="client-card glass-panel" title="Sim Saúde">
+                        <img src="assets/logo_sim_saude_trans.png" alt="Sim Saúde" onerror="this.onerror=null; this.src='../Clientes/Sim%20Sa%C3%BAde/logo%20sim%20sa%C3%BAde.jfif';">
+                    </div>
+                    
+                    <!-- 2. Dra Maiza Torres -->
+                    <div class="client-card glass-panel" title="Dra. Maíza Torres">
+                        <img src="assets/logo_dra_maiza_trans.png" alt="Dra. Maíza Torres" onerror="this.onerror=null; this.src='../Clientes/Dra%20Maiza%20Torres/LOGO%20DRA%20MAIZA.png';">
+                    </div>
+                    
+                    <!-- 3. Fabrício Silva Psicologia -->
+                    <div class="client-card glass-panel" title="Fabrício Silva Psicologia">
+                        <img src="assets/logo_fabricio_silva_trans.png" alt="Fabrício Silva Psicologia" onerror="this.onerror=null; this.src='../Clientes/Fabr%C3%ADcio%20Silva/logo_sem_fundo.png';">
+                    </div>
+                    
+                    <!-- 4. Bárbara Luiza Psi -->
+                    <div class="client-card glass-panel" title="Bárbara Luiza Psi">
+                        <img src="assets/logo_barbara.svg" alt="Bárbara Luiza Psi" onerror="this.onerror=null; this.src='../Sites/B%C3%A1rbara%20Luiza/logo_barbara.svg';">
+                    </div>
+                    
+                    <!-- 5. La Bahianita -->
+                    <div class="client-card glass-panel" title="La Bahianita">
+                        <img src="assets/Logo sol s Fundo (svg).svg" alt="La Bahianita" onerror="this.onerror=null; this.src='../Clientes/Labahianita/Logo%20sol%20s%20Fundo%20(svg).svg';">
+                    </div>
+                    
+                    <!-- 6. Alecrim Bahia -->
+                    <div class="client-card glass-panel" title="Alecrim Bahia">
+                        <img src="assets/logo_alecrim_bahia_trans.png" alt="Alecrim Bahia" class="logo-lighten" onerror="this.onerror=null; this.src='../Clientes/N%C3%BAbia%20Experience/Alecrim-removebg-preview.png';">
+                    </div>
+                    
+                    <!-- 7. MP Pro Filmes -->
+                    <div class="client-card glass-panel" title="MP Pro Filmes">
+                        <img src="assets/LOGO-MP-FILMES2.png" alt="MP Pro Filmes" onerror="this.onerror=null; this.src='../Clientes/MP%20Pro%20Filmes/LOGO-MP-FILMES2.png';">
+                    </div>
+                    
+                    <!-- 8. Núbia Experience -->
+                    <div class="client-card glass-panel" title="Núbia Experience">
+                        <img src="assets/logo_nubia_experience_trans.png" alt="Núbia Experience" class="logo-lighten" onerror="this.onerror=null; this.src='../Clientes/N%C3%BAbia%20Experience/WhatsApp_Image_2025-10-30_at_11.57.50-removebg-preview.png';">
+                    </div>
+                    
+                    <!-- 9. Império do Pão -->
+                    <div class="client-card glass-panel" title="Império do Pão">
+                        <img src="assets/logo_imperio_do_pao_trans.png" alt="Império do Pão" onerror="this.onerror=null; this.src='../Clientes/Imp%C3%A9rio%20do%20P%C3%A3o/489925867_122103883508836005_861022849174316677_n.jpg';">
+                    </div>
+
+                    <!-- 10. BrincaKids Locações -->
+                    <div class="client-card glass-panel" title="BrincaKids Locações">
+                        <img src="assets/logo_brincakids_trans.png" alt="BrincaKids Locações" onerror="this.onerror=null; this.src='C:/Users/User/.gemini/antigravity-ide/brain/0669f843-af96-4f03-a3a4-fd0d25480b27/media__1781589642652.png';">
+                    </div>
+
+                    <!-- 11. Premium Design Studio -->
+                    <div class="client-card glass-panel" title="Premium Design Studio">
+                        <img src="assets/logo_mental_health.svg" alt="Premium Design Studio">
+                    </div>
+
+                    <!-- 12. Garagem 844 -->
+                    <div class="client-card glass-panel" title="Garagem 844">
+                        <img src="assets/logo_garagem844.svg" alt="Garagem 844">
+                    </div>
+
+                    <!-- 13. Henrique Food Service -->
+                    <div class="client-card glass-panel" title="Henrique Food Service">
+                        <img src="assets/logo_henrique_food_service.svg" alt="Henrique Food Service">
+                    </div>
+
+                    <!-- 14. Eduardo Borges Psi -->
+                    <div class="client-card glass-panel" title="Eduardo Borges Psi">
+                        <img src="assets/logo_eduardo_borges_psi.svg" alt="Eduardo Borges Psi">
+                    </div>
+
+                    <!-- 15. Meneghin -->
+                    <div class="client-card glass-panel" title="Meneghin - Energia, Mineração e Meio Ambiente">
+                        <img src="assets/logo_meneghin.svg" alt="Meneghin">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FIM: CLIENTES ABDUZIDOS -->
 
         <!-- INÍCIO: FUNDADOR -->
         <section id="fundador" class="founder-section">
@@ -1382,7 +2195,7 @@
                 <div class="contact-box glass-panel">
                     <h2>Pronto para a <span class="neon-text">Evolução?</span></h2>
                     <p>Agende uma consultoria gratuita e comece a escalar o seu negócio.</p>
-                    <a href="https://wa.me/5573998529223" target="_blank" class="btn-neon">Conversar com um Alien</a>
+                    <a href="https://wa.me/5531984706088?text=Estou%20pronto%20para%20evoluir%20meu%20neg%C3%B3cio" target="_blank" class="btn-neon">Estou pronto para evoluir meu negócio</a>
                 </div>
             </div>
         </section>
@@ -1416,18 +2229,30 @@
                     <h4>Contato</h4>
                     <ul>
                         <li><a href="#">alientrafego@gmail.com</a></li>
-                        <li><a href="#">73 998529223</a></li>
+                        <li><a href="#">31 984706088</a></li>
                         <li><a href="#">Atendemos em todo território brasileiro.</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-links">
                     <h4>Redes Sociais</h4>
-                    <ul>
-                        <li><a href="https://www.instagram.com/alienmkt_/" target="_blank">Instagram</a></li>
-                        <li><a href="https://www.facebook.com/profile.php?id=61572148648768" target="_blank">Facebook</a></li>
-                        <li><a href="https://www.tiktok.com/@alienmkt_?_r=1&_t=ZS-96a00lF3noz" target="_blank">TikTok</a></li>
-                    </ul>
+                    <div class="footer-social-icons">
+                        <a href="https://www.instagram.com/alienmkt_/" target="_blank" title="Instagram" class="social-btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61572148648768" target="_blank" title="Facebook" class="social-btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@alienmkt_?_r=1&_t=ZS-96a00lF3noz" target="_blank" title="TikTok" class="social-btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.18 1.09 1.25 2.58 2.08 4.22 2.45v3.9c-1.57-.02-3.11-.53-4.43-1.4-1.07-.72-1.94-1.74-2.54-2.91.03 2.93.02 5.86.02 8.79 0 2.05-.51 4.13-1.63 5.82-1.4 2.1-3.79 3.48-6.32 3.65-2.74.17-5.59-.87-7.23-3.11C-.73 19.32-1.12 15.65.68 12.89c1.23-1.89 3.29-3.17 5.57-3.41.97-.1 1.96-.03 2.92.17V13.8c-1.13-.34-2.39-.2-3.37.47-.96.65-1.55 1.78-1.55 2.97 0 1.23.63 2.42 1.66 3.1 1.23.8 2.88.8 4.08.03 1.05-.67 1.63-1.92 1.63-3.19-.01-5.74-.01-11.47-.01-17.21v-.05z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/alien-marketing-inteligente-536660416/" target="_blank" title="LinkedIn" class="social-btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://www.youtube.com/@AlienMarketingInteligente" target="_blank" title="YouTube" class="social-btn">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.108C19.53 3.53 12 3.53 12 3.53s-7.53 0-9.388.525A3.003 3.003 0 0 0 .502 6.163C0 8.07 0 12 0 12s0 3.93.502 5.837a3.003 3.003 0 0 0 2.11 2.108C4.47 20.47 12 20.47 12 20.47s7.53 0 9.388-.525a3.003 3.003 0 0 0 2.11-2.108C24 15.93 24 12 24 12s0-3.93-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -1440,7 +2265,7 @@
     </footer>
     <!-- FIM: FOOTER -->
 
-    <a href="https://wa.me/5573998529223" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/5531984706088" target="_blank" class="whatsapp-float">
         <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
     </a>
 
@@ -1474,6 +2299,20 @@
                 });
             });
         });
+
+        // Tab Switcher da Seção de Planos / Serviços
+        function switchPricingTab(tabName) {
+            document.querySelectorAll('.pricing-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.pricing-tab-content').forEach(content => content.classList.remove('active'));
+
+            if (tabName === 'trafego') {
+                document.querySelectorAll('.pricing-tab-btn')[0].classList.add('active');
+                document.getElementById('tab-trafego').classList.add('active');
+            } else {
+                document.querySelectorAll('.pricing-tab-btn')[1].classList.add('active');
+                document.getElementById('tab-solucoes').classList.add('active');
+            }
+        }
 
         // Efeito de Parallax simples no background
         document.addEventListener('mousemove', (e) => {
@@ -1542,6 +2381,167 @@
                 }
             });
         });
+    
+        // =========================================
+        // CARROSSEL DE DEPOIMENTOS (1 POR VEZ)
+        // =========================================
+        function initTestimonialsCarousel() {
+            const track = document.getElementById('testimonialsTrack');
+            if (!track) return;
+            const slides = track.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('#testimonialDots .carousel-dot');
+            const prevBtn = document.getElementById('testimonial-prev');
+            const nextBtn = document.getElementById('testimonial-next');
+            const wrapper = document.querySelector('.testimonials-carousel-wrapper');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoInterval = null;
+
+            function updateCarousel() {
+                track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+                dots.forEach((dot, idx) => {
+                    if (idx === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoPlay() {
+                if (autoInterval) {
+                    clearInterval(autoInterval);
+                    autoInterval = null;
+                }
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    nextSlide();
+                    startAutoPlay();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    prevSlide();
+                    startAutoPlay();
+                });
+            }
+
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    currentIndex = idx;
+                    updateCarousel();
+                    startAutoPlay();
+                });
+            });
+
+            if (wrapper) {
+                wrapper.addEventListener('mouseenter', stopAutoPlay);
+                wrapper.addEventListener('mouseleave', startAutoPlay);
+                
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                wrapper.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopAutoPlay();
+                }, { passive: true });
+
+                wrapper.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diffX = touchStartX - touchEndX;
+                    if (Math.abs(diffX) > 45) {
+                        if (diffX > 0) {
+                            nextSlide();
+                        } else {
+                            prevSlide();
+                        }
+                    }
+                    startAutoPlay();
+                }, { passive: true });
+            }
+
+            updateCarousel();
+            startAutoPlay();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTestimonialsCarousel);
+        } else {
+            initTestimonialsCarousel();
+        }
+
+    
+        // =========================================
+        // TOGGLE MANIFESTO ALIEN (MOBILE)
+        // =========================================
+        function initManifestoToggle() {
+            const box = document.getElementById('manifestoBox');
+            const btn = document.getElementById('manifestoToggleBtn');
+            const textSpan = document.getElementById('manifestoToggleText');
+            if (!box || !btn) return;
+
+            if (window.innerWidth <= 768) {
+                box.classList.add('collapsed');
+            }
+
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isCollapsed = box.classList.contains('collapsed');
+                if (isCollapsed) {
+                    box.classList.remove('collapsed');
+                    btn.classList.add('expanded');
+                    if (textSpan) {
+                        textSpan.textContent = btn.getAttribute('data-collapse-text') || 'Mostrar Menos';
+                    }
+                } else {
+                    box.classList.add('collapsed');
+                    btn.classList.remove('expanded');
+                    if (textSpan) {
+                        textSpan.textContent = btn.getAttribute('data-expand-text') || 'Continuar Lendo o Manifesto';
+                    }
+                    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    box.classList.remove('collapsed');
+                } else if (!btn.classList.contains('expanded')) {
+                    box.classList.add('collapsed');
+                }
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initManifestoToggle);
+        } else {
+            initManifestoToggle();
+        }
+
     </script>
 </body>
 </html>
