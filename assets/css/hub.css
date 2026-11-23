@@ -1,0 +1,25 @@
+/* Seletor de nicho */
+:root{--neon:#17855c;--bg:#fff;--text:#10342c;--muted:#4f6760;--line:rgba(16,52,44,.11)}
+body.hub{background:radial-gradient(circle at 15% 10%,rgba(23,133,92,.1),transparent 40%),radial-gradient(circle at 90% 30%,rgba(196,85,31,.1),transparent 42%),#fffdf8;color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.bg-video,.stars{display:none}
+.hub-top{padding:22px 0}.hub-top .logo img{height:48px;width:auto}
+.hub-main{flex:1;text-align:center;padding:30px 0 60px}
+.hub-main h1{font-family:Outfit,sans-serif;font-size:clamp(2.4rem,6vw,4rem);margin:12px 0}
+.hub-main .neon{color:var(--neon)}
+.hub-main .lead{max-width:560px;margin:0 auto 44px;color:var(--muted)}
+.hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1000px;margin:0 auto;text-align:left}
+.hub-card{display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 14px 40px rgba(16,52,44,.09);transition:transform .35s,box-shadow .35s;color:var(--text)}
+.hub-card:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(16,52,44,.16)}
+.hc-media{height:200px;display:grid;place-items:center}
+.hc-saude .hc-media{background:linear-gradient(135deg,#e6f4ee,#cfe9de)}.hc-saude .hc-media img{height:120px;width:auto}
+.hc-tur .hc-media{background:linear-gradient(135deg,#12302a,#0f6672)}.hc-tur .hc-media img{width:240px;height:auto}
+.hc-body{padding:28px 30px 32px}
+.hc-tag{display:inline-block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--neon)}
+.hc-tur .hc-tag{color:#c4551f}
+.hc-body h2{font-family:Outfit,sans-serif;font-size:1.5rem;margin:8px 0 10px;line-height:1.2}
+.hc-body p{color:var(--muted);margin-bottom:18px}
+.hc-go{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--neon)}.hc-tur .hc-go{color:#c4551f}
+.hc-go svg{width:18px;height:18px;transition:transform .3s}.hub-card:hover .hc-go svg{transform:translateX(6px)}
+.hub-note{margin-top:34px;color:var(--muted)}.hub-note a{color:var(--neon);text-decoration:underline}
+.hub-foot{padding:24px 0;text-align:center;font-size:.82rem;color:var(--muted)}.hub-foot a{text-decoration:underline}
+@media(max-width:760px){.hub-grid{grid-template-columns:1fr}}
